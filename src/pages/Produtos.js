@@ -1,3 +1,42 @@
-export default function Produtos() {
-    return <h2>🛍 Página de Produtos</h2>;
-  }
+import React, { useEffect, useState } from 'react';
+import { get } from '../services/api';
+import CategoriaMenu from '../components/CategoriaMenu';
+import ListaPorCategoria from '../components/ListaPorCategoria';
+
+const categorias = ['Limpeza', 'Escritório', 'Papelaria', 'Segurança'];
+
+const Produtos = () => {
+  const [produtos, setProdutos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    get('produto')
+      .then(data => {
+        setProdutos(data);
+        setCarregando(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setCarregando(false);
+      });
+  }, []);
+
+  if (carregando) return <p>Carregando produtos...</p>;
+
+  return (
+    <div>
+      <CategoriaMenu />
+      <div style={{ padding: '16px' }}>
+        {categorias.map(categoria => (
+          <ListaPorCategoria
+            key={categoria}
+            categoria={categoria}
+            produtos={produtos}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Produtos;

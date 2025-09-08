@@ -1,0 +1,30 @@
+/* Categoria */
+section {
+    margin-bottom: 40px;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  /* Para garantir que a lista de produtos não ultrapasse a largura da tela */
+  .produto-item-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .produto-item-vertical img {
+    max-width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .produto-item-vertical {
+      width: 100%;
+      padding: 8px;
+    }
+  }
+  

@@ -1,0 +1,48 @@
+.produto-item {
+    display: flex;
+    align-items: center; /* Alinha a imagem e os dados verticalmente */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    text-align: left;
+  }
+  
+  .produto-imagem {
+    width: 60px; /* Tamanho fixo da imagem */
+    height: 60px;
+    margin-right: 16px; /* Espaçamento entre imagem e dados */
+  }
+  
+  .produto-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+  
+  .produto-dados {
+    flex: 1; /* Faz com que o bloco de dados ocupe o restante do espaço */
+  }
+  
+  .produto-dados h4 {
+    font-size: 0,9rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .preco {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .estoque {
+    font-size: 0.6rem;
+    color: #555;
+  } 
+  .descricao {
+    font-size: 0.6rem;
+    color: #555;
+  }
+
