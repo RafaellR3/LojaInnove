@@ -1,0 +1,59 @@
+.categorias {
+    margin: 20px 0;
+    padding: 0 12px;
+  }
+  
+  .categorias h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  
+  /* Container horizontal com scroll */
+  .lista-categorias {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .categoria-item {
+    min-width: 100px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f3f4f6;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .categoria-item:hover {
+    background: #e5e7eb;
+  }
+  
+  .categoria-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .categoria-item span {
+    font-size: 0.95rem;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Opcional: esconder barra de rolagem */
+  .lista-categorias::-webkit-scrollbar {
+    display: none;
+  }
+  .lista-categorias {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  

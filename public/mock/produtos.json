@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "nome": "Caneta Azul",
+      "preco": 2.99,
+      "imagem": "/images/caneta.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Caderno Espiral",
+      "preco": 12.50,
+      "imagem": "/images/caderno.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Álcool em Gel",
+      "preco": 7.80,
+      "imagem": "/images/alcool.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Máscara de Proteção",
+      "preco": 1.50,
+      "imagem": "/images/mascara.jpg"
+    }
+  ]
+  
