@@ -1,0 +1,69 @@
+.promocoes {
+    margin: 20px 0;
+    padding: 0 12px;
+  }
+  
+  .promocoes h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  
+  .lista-promocoes {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .promo-item {
+    min-width: 180px;
+    max-width: 200px;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    scroll-snap-align: start;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  }
+  
+  .promo-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  
+  .nome {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  
+  .preco-original {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  .preco-promocional {
+    color: #d41919;
+    font-weight: bold;
+    font-size: 1rem;
+  }  
+
+.produto-item img {
+  width: 100%;
+  max-width: 140px;
+  height: 120px;                /* força mesma altura */
+  object-fit: contain;          /* mantém imagem dentro sem cortar */
+  border-radius: 6px;
+  margin-bottom: 8px;
+  display: block;
+  background-color: #fff;       /* evita fundo estranho em imagens com transparência */
+}
+  
