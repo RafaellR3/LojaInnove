@@ -1,7 +1,7 @@
 .produto-detalhe {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
   }
   
   .produto-imagem-detalhe img {
@@ -50,9 +50,7 @@
     margin-top: 15px;
     font-size: 18px;
   }
-  .produto-info p {
-    margin: 4px 0;
-  }
+
   .produto-controles {
     margin-top: 20px;
   }
@@ -142,4 +140,20 @@
   .compra-buttons button {
     margin-top: 10px;
   }
-  
+  .compartilhar {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.compartilhar button {
+  color: #00327e;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.compartilhar button:hover {
+  background-color: #00327e;
+}

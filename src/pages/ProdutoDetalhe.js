@@ -21,7 +21,7 @@ const ProdutoDetalhe = () => {
         setCarregando(false);
 
         // Buscar produtos relacionados (exemplo de como pode ser feito)
-        get(`produtos/relacionados/${data.categoria}`)
+        get('produto')
           .then(relacionados => setProdutosRelacionados(relacionados))
           .catch(err => console.error('Erro ao buscar produtos relacionados:', err));
       })
@@ -30,6 +30,8 @@ const ProdutoDetalhe = () => {
         setCarregando(false);
       });
   }, [id]);  // Recarrega os dados quando o id mudar
+
+  const relacionadosFiltrados = produtosRelacionados.filter(p => p.id !== produto.id);
 
   const aumentar = () => {
     if (produto && quantidade < produto.estoque) {
@@ -97,8 +99,8 @@ const ProdutoDetalhe = () => {
       <div className="produtos-relacionados">
         <h3>Produtos Relacionados</h3>
         <div className="produtos-lista">
-          {produtosRelacionados.length > 0 ? (
-            produtosRelacionados.map((item) => (
+          {relacionadosFiltrados.length > 0 ? (
+            relacionadosFiltrados.map((item) => (
               <div key={item.id} className="produto-item">
                 <img src={`${BASE_URL}${item.urlImagem}`} alt={item.nome} />
                 <p>{item.nome}</p>
