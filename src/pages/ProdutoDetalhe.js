@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate  } from 'react-router-dom';
 import '../styles/ProdutoDetalhe.css'; 
-import { get, BASE_URL } from '../services/api';
+import { get, post, BASE_URL, CODIGO_USUARIO } from '../services/api';
 
 const ProdutoDetalhe = () => {
   const { id } = useParams();  // Captura o id da URL
   const [produto, setProduto] = useState(null);
   const [carregando, setCarregando] = useState(true);
   const [quantidade, setQuantidade] = useState(1);
-  const [produtosRelacionados, setProdutosRelacionados] = useState([]); // Adicionado para produtos relacionados
+  const [produtosRelacionados, setProdutosRelacionados] = useState([]); 
+  const navigate = useNavigate();  // Hook de navegação
 
   useEffect(() => {
     // Supondo que você tenha uma função para buscar o produto por id
@@ -45,15 +46,29 @@ const ProdutoDetalhe = () => {
     }
   };
 
-  const adicionarAoCarrinho = () => {
-    // Simulação do que seria adicionar ao carrinho
-    console.log("Adicionado ao carrinho:", {
-      produto,
-      quantidade,
-      total: quantidade * produto.preco
+const adicionarAoCarrinho = () => {
+    const produtoCarrinho = {
+      CodigoProduto: produto.id,
+      Quant: quantidade,
+      PrecoUn: produto.preco,
+      ValorTotal: quantidade * produto.preco,
+      CodigoUsuario: `${CODIGO_USUARIO}`,
+    };
+
+    // Fazendo a requisição POST para adicionar o produto ao carrinho
+    post('Carrinho/AdicionarItem', produtoCarrinho)
+    .then(data => {
+      console.log("Produto adicionado ao carrinho:", data);
+      alert(`${quantidade}x ${produto.nome} foi adicionado ao carrinho!`);
+
+      navigate('/produtos');
+    })
+    .catch(err => {
+      console.error("Erro ao adicionar ao carrinho:", err);
+      alert("Ocorreu um erro ao adicionar o produto ao carrinho.");
     });
-    alert(`Adicionado ${quantidade}x ${produto.nome} ao carrinho!`);
   };
+
 
   if (carregando) return <p>Carregando...</p>;
 
@@ -98,7 +113,7 @@ const ProdutoDetalhe = () => {
       {/* Produtos relacionados abaixo */}
       <div className="produtos-relacionados">
         <h3>Produtos Relacionados</h3>
-        <div className="produtos-lista">
+        <div className="produtos-lista-detalhe">
           {relacionadosFiltrados.length > 0 ? (
             relacionadosFiltrados.map((item) => (
               <div key={item.id} className="produto-item">
