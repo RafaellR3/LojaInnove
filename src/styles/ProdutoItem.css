@@ -54,6 +54,7 @@
     margin-bottom: 12px;
     background-color: #fff;
     text-align: left;      
-    text-decoration: none;
+    text-decoration: none;  
+    color: inherit;     
   }
 
