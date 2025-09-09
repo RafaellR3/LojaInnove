@@ -48,10 +48,6 @@
     font-size: 0.9rem;
   }
   
-  /* Remover scroll bar */
-  .lista-produtos::-webkit-scrollbar {
-    display: none;
-  }
   
   .lista-produtos {
     -ms-overflow-style: none;

@@ -1,5 +1,5 @@
 .categorias {
-    margin: 20px 0;
+    margin: 15px 0;
     padding: 0 12px;
   }
   
@@ -11,7 +11,6 @@
   /* Container horizontal com scroll */
   .lista-categorias {
     display: flex;
-    gap: 16px;
     overflow-x: auto;
     padding-bottom: 8px;
     scroll-snap-type: x mandatory;
@@ -35,25 +34,18 @@
   }
   
   .categoria-item img {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 8px;
   }
   
   .categoria-item span {
-    font-size: 0.95rem;
+    font-size: 0.7rem;
     text-align: center;
     font-weight: 500;
   }
   
-  /* Opcional: esconder barra de rolagem */
-  .lista-categorias::-webkit-scrollbar {
-    display: none;
-  }
-  .lista-categorias {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+ 
   

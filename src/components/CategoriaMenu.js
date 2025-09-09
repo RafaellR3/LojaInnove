@@ -1,20 +1,13 @@
-import React from 'react';
+import {BASE_URL} from '../services/api';
 import '../styles/CategoriaMenu.css';
 
-const categorias = [
-  { nome: 'Limpeza', icone: '🧼' },
-  { nome: 'Escritório', icone: '🖋️' },
-  { nome: 'Papelaria', icone: '📚' },
-  { nome: 'Segurança', icone: '🛡️' }
-];
 
-const CategoriaMenu = () => {
+const CategoriaMenu = ({categorias}) => {
   return (
     <nav className="categoria-menu">
       {categorias.map(cat => (
         <a key={cat.nome} href={`#${cat.nome}`} className="categoria-link">
-          <div className="icone">{cat.icone}</div>
-          <span>{cat.nome}</span>
+          <img src={`${BASE_URL}${cat.urlImagem}`} alt={cat.nome}  className='icone'/>
         </a>
       ))}
     </nav>

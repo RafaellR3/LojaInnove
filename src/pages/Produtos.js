@@ -3,11 +3,23 @@ import { get } from '../services/api';
 import CategoriaMenu from '../components/CategoriaMenu';
 import ListaPorCategoria from '../components/ListaPorCategoria';
 
-const categorias = ['Limpeza', 'Escritório', 'Papelaria', 'Segurança'];
 
 const Produtos = () => {
   const [produtos, setProdutos] = useState([]);
   const [carregando, setCarregando] = useState(true);
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    get('categoria')
+      .then(data => {
+        setCategorias(data);
+        setCarregando(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setCarregando(false);
+      });
+  }, []);
 
   useEffect(() => {
     get('produto')
@@ -25,7 +37,7 @@ const Produtos = () => {
 
   return (
     <div>
-      <CategoriaMenu />
+      <CategoriaMenu categorias={categorias} />
       <div style={{ padding: '16px' }}>
         {categorias.map(categoria => (
           <ListaPorCategoria
