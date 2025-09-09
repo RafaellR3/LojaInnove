@@ -15,6 +15,9 @@ const Header = () => {
       <div className="container">
         <Link to="/" onClick={closeMenu} className="logo-link">
           <img src="images/logobranca.png" alt="Loja Innove" className="logo" />
+        </Link>        
+        <Link to="/" className="menu-toggle" aria-label="Go to favorites">
+           <FaHome   />
         </Link>
         <Link to="/favoritos" className="menu-toggle" aria-label="Go to favorites">
            <FaHeart   />

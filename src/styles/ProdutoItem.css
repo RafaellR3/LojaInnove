@@ -45,3 +45,15 @@
     color: #555;
   }
 
+  .produto-item-link 
+  {
+    display: flex;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    text-align: left;      
+    text-decoration: none;
+  }
+

@@ -7,6 +7,7 @@ import Produtos from './pages/Produtos';
 import Carrinho from './pages/Carrinho';
 import Favoritos from './pages/Favoritos';
 import Perfil from './pages/Perfil';
+import ProdutoDetalhe from './pages/ProdutoDetalhe';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/produto/:id" element={<ProdutoDetalhe />} />  
         </Routes>
       </div>
     </Router>
