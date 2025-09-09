@@ -18,6 +18,9 @@ const Header = () => {
         </Link>        
         <Link to="/" className="menu-toggle" aria-label="Go to favorites">
            <FaHome   />
+        </Link>        
+        <Link to="/produtos" className="menu-toggle" aria-label="Go to produtos">
+           <FaBoxOpen   />
         </Link>
         <Link to="/favoritos" className="menu-toggle" aria-label="Go to favorites">
            <FaHeart   />
