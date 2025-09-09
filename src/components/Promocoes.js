@@ -32,7 +32,7 @@ const Promocoes = () => {
             <img src={`${BASE_URL}${prod.urlImagem}`} alt={prod.nome} />
             <span className="nome">{prod.nome}</span>
             <span className="preco-original">R$ {prod.preco.toFixed(2)}</span>
-            <span className="preco-promocional">R$ {prod.preco.toFixed(2)}</span>
+            <span className="preco-promocional"> R$ {prod.preco.toFixed(2)}</span>
           </div>
         ))}
       </div>

@@ -46,12 +46,12 @@
   
   .preco-original {
     text-decoration: line-through;
-    color: #888;
+    color: #da1d1dd3;
     font-size: 0.9rem;
   }
   
   .preco-promocional {
-    color: #d41919;
+    color: #1945d4;
     font-weight: bold;
     font-size: 1rem;
   }  
