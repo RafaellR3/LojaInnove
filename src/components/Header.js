@@ -16,8 +16,11 @@ const Header = () => {
         <Link to="/" onClick={closeMenu} className="logo-link">
           <img src="images/logobranca.png" alt="Loja Innove" className="logo" />
         </Link>
+        <Link to="/favoritos" className="menu-toggle" aria-label="Go to favorites">
+           <FaHeart   />
+        </Link>
         <Link to="/carrinho" className="menu-toggle" aria-label="Go to cart">
-          🛒
+           <FaShoppingCart  />
         </Link>
         <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
           ☰
