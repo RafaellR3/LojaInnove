@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/ProdutoDetalhe.css'; 
-import { get, BASE_URL} from '../services/api';
+import { get, BASE_URL } from '../services/api';
 
 const ProdutoDetalhe = () => {
   const { id } = useParams();  // Captura o id da URL
   const [produto, setProduto] = useState(null);
   const [carregando, setCarregando] = useState(true);
+  const [quantidade, setQuantidade] = useState(1);
+  const [produtosRelacionados, setProdutosRelacionados] = useState([]); // Adicionado para produtos relacionados
 
   useEffect(() => {
     // Supondo que você tenha uma função para buscar o produto por id
@@ -17,6 +19,11 @@ const ProdutoDetalhe = () => {
         }
         setProduto(data);
         setCarregando(false);
+
+        // Buscar produtos relacionados (exemplo de como pode ser feito)
+        get(`produtos/relacionados/${data.categoria}`)
+          .then(relacionados => setProdutosRelacionados(relacionados))
+          .catch(err => console.error('Erro ao buscar produtos relacionados:', err));
       })
       .catch(err => {
         console.error(err);
@@ -24,8 +31,32 @@ const ProdutoDetalhe = () => {
       });
   }, [id]);  // Recarrega os dados quando o id mudar
 
+  const aumentar = () => {
+    if (produto && quantidade < produto.estoque) {
+      setQuantidade(prev => prev + 1);
+    }
+  };
+
+  const diminuir = () => {
+    if (quantidade > 1) {
+      setQuantidade(prev => prev - 1);
+    }
+  };
+
+  const adicionarAoCarrinho = () => {
+    // Simulação do que seria adicionar ao carrinho
+    console.log("Adicionado ao carrinho:", {
+      produto,
+      quantidade,
+      total: quantidade * produto.preco
+    });
+    alert(`Adicionado ${quantidade}x ${produto.nome} ao carrinho!`);
+  };
+
   if (carregando) return <p>Carregando...</p>;
+
   console.log("Produto retornado:", produto);
+
   if (!carregando && (!produto || !produto.id)) {
     return <p>Produto não encontrado.</p>;
   }
@@ -39,9 +70,45 @@ const ProdutoDetalhe = () => {
         <h2>{produto.nome}</h2>
         <p>{produto.descricao}</p>
         <p><strong>Preço:</strong> R${produto.preco?.toFixed(2)}</p>
-        <p><strong>Estoque:</strong> {produto.estoque} </p>
-
-        {/* Adicionar funcionalidades adicionais, como controle de quantidade, etc */}
+        <p><strong>Estoque:</strong> {produto.estoque}</p>
+  
+        <div className="produto-controles">
+          <div className="controle-quantidade">
+            <button onClick={diminuir}>-</button>
+            <span>{quantidade}</span>
+            <button onClick={aumentar}>+</button>
+            <button onClick={adicionarAoCarrinho}>Incluir no carrinho</button>
+          </div>
+  
+          <div className="totalizador">
+            <strong>Total: R$ {(quantidade * produto.preco).toFixed(2)}</strong>
+          </div>
+        </div>       
+  
+        {/* Botões de compartilhamento */}
+        <div className="compartilhar">
+          <button>Compartilhar no Facebook</button>
+          <button>Compartilhar no WhatsApp</button>
+          <button>Compartilhar no Instagram</button>
+        </div>
+      </div>
+  
+      {/* Produtos relacionados abaixo */}
+      <div className="produtos-relacionados">
+        <h3>Produtos Relacionados</h3>
+        <div className="produtos-lista">
+          {produtosRelacionados.length > 0 ? (
+            produtosRelacionados.map((item) => (
+              <div key={item.id} className="produto-item">
+                <img src={`${BASE_URL}${item.urlImagem}`} alt={item.nome} />
+                <p>{item.nome}</p>
+                <span>R$ {item.preco.toFixed(2)}</span>
+              </div>
+            ))
+          ) : (
+            <p>Sem produtos relacionados no momento.</p>
+          )}
+        </div>
       </div>
     </div>
   );
