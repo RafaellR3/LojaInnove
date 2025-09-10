@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {get, CODIGO_USUARIO} from '../services/api';
 import CarrinhoItem from '../components/CarrinhoItem';
+import EnderecoCarrinho from '../components/EnderecoCarrinho';
 
 const Carrinhos = () => {
   const [carrinho, setCarrinho] = useState([]);
@@ -41,6 +42,8 @@ return (
           />
         ))}
         <h3>Total: R$ {valorTotal}</h3>
+        <EnderecoCarrinho />
+        <button className='confirmar'> Confirmar Pedido </button>
       </div>
   );
 };
