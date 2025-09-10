@@ -27,7 +27,7 @@ const Carrinhos = () => {
 
 
   const handleConfirmar = () => {
-    if (!enderecoSelecionado) {
+  /*  if (!enderecoSelecionado) {
       alert("Por favor, selecione um endereço.");
       return;
     }
@@ -54,7 +54,7 @@ const Carrinhos = () => {
       .catch(err => {
         setErro(err.message || 'Erro ao inserir pedido.');
       });
-      
+      */
   };
 
 if (carregando) return <p>Carregando carrinho...</p>;
