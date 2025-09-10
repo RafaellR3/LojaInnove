@@ -46,7 +46,7 @@ const EnderecoCarrinho = ()=> {
       <section className="mais-vendidos">
         <h3>Endereço de entrega</h3>
         <Link to={`/enderecos/${enderecoSel.codigoUsuario}`} className="produto-item-link">
-        <div className="endereco-selecionado">
+        <div >
           <div key={enderecoSel.id} >
               <span className="nome">Rua: {enderecoSel.rua}, Num.: {enderecoSel.numero}</span>
               <span className="nome">Cidade: {enderecoSel.cidade}</span>
@@ -55,7 +55,7 @@ const EnderecoCarrinho = ()=> {
             </div>
         </div>        
       </Link>
-      </section>
+      </section> 
     );
 };
 
