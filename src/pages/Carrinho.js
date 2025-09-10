@@ -26,6 +26,37 @@ const Carrinhos = () => {
   }
 
 
+  const handleConfirmar = () => {
+    if (!enderecoSelecionado) {
+      alert("Por favor, selecione um endereço.");
+      return;
+    }
+    const pedido = {
+      CodigoUsuario: `${CODIGO_USUARIO}`,
+      Rua: enderecoSelecionado.Rua,
+      Cidade: enderecoSelecionado.Cidade,
+      Bairro: enderecoSelecionado.Bairro,
+      Complemento: enderecoSelecionado.Complemento,
+      Numero: enderecoSelecionado.Numero,
+      Itens: carrinho.itens.map(item => ({
+        CodigoProduto: item.id,
+        Quantidade: item.Quantidade,
+        PrecoUn: item.PrecoUn
+      })),
+      Total: carrinho.valorTotal
+    }
+
+    // Enviar PUT para atualizar o endereço
+    post(`pedido`, pedido)
+      .then(response => {
+        window.history.back();
+      })
+      .catch(err => {
+        setErro(err.message || 'Erro ao inserir pedido.');
+      });
+      
+  };
+
 if (carregando) return <p>Carregando carrinho...</p>;
 
 if (!carrinho){
@@ -49,7 +80,7 @@ return (
     </div>
      <div>
         <EnderecoCarrinho />
-        <button className='botao-enderecos'> Confirmar Pedido </button> 
+        <button className='botao-enderecos' onClick={handleConfirmar}> Confirmar Pedido </button> 
      </div>    
   </div>
   );
