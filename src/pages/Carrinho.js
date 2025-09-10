@@ -34,6 +34,7 @@ if (!carrinho){
 
 return (    
   <div style={{ padding: '16px' }}>
+    <div>    
         {carrinho.itens.map(item => (
           <CarrinhoItem
             key={item}
@@ -41,10 +42,16 @@ return (
             onAtualizarCarrinho={atualizarCarrinho}
           />
         ))}
-        <h3>Total: R$ {valorTotal}</h3>
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h3>Total:</h3>
+        <h3>R$ {valorTotal}</h3>
+    </div>
+     <div>
         <EnderecoCarrinho />
-        <button className='confirmar'> Confirmar Pedido </button>
-      </div>
+        <button className='botao-enderecos'> Confirmar Pedido </button> 
+     </div>    
+  </div>
   );
 };
 export default Carrinhos;

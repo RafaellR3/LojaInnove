@@ -1,61 +1,103 @@
-import { get} from  '../services/api';
+import { get, put } from '../services/api';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Enderecos = () => {
-    const { id } = useParams(); 
-    const [enderecos, setEnderecos] = useState([]);
-    const [carregando, setCarregando] = useState(true);
-    const [erro, setErro] = useState(null);
+  const { id } = useParams(); 
+  const [enderecos, setEnderecos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState(null);
+  const [enderecoSelecionado, setEnderecoSelecionado] = useState(null);
 
-    useEffect(() => {
-        setCarregando(true);
-        setErro(null);
-    
-        get(`EnderecoUsuario/${id}/RecuperarPorUsuario`) 
-          .then(data => {
-            setEnderecos(data);
-            setCarregando(false);
-          })
-          .catch(err => {
-            setErro(err.message || 'Erro inesperado');
-            setCarregando(false);
-          });
-      }, [id]);
+  useEffect(() => {
+    setCarregando(true);
+    setErro(null);
 
-      if (carregando) return <p> Carregando endereços...</p>;
-      if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
-  
-        if (!enderecos){
-            return <p>Nenhum endereço cadastrado.</p>;
+    get(`EnderecoUsuario/${id}/RecuperarPorUsuario`) 
+      .then(data => {
+        setEnderecos(data);
+        setCarregando(false);
+        // Definir o endereço padrão como selecionado inicialmente
+        const enderecoPadrao = data.find(endereco => endereco.padrao === true);
+        if (enderecoPadrao) {
+          setEnderecoSelecionado(enderecoPadrao.id);
         }
-    return (
-      <div>
-        <div style={{ padding: '16px' }}>
-          {enderecos.map(endereco => (
-            <div className="endereco-selecionado">
-                <div key={endereco.id} >
-                    <span className="nome">Rua: {endereco.rua}, Num.: {endereco.numero}</span>
-                    <span className="nome">Cidade: {endereco.cidade}</span>
-                    <span className="nome">Bairro: {endereco.bairro}</span>
-                    <span className="nome">CEP: {endereco.cep}</span>
-                    <span >
-                        Padrão <input type="checkbox" checked={endereco.padrao} disabled /> 
-                    </span>
-                </div>
-            </div>        
-          ))}
-        </div>
-        <div></div>
-        <div>
-            <button className='confirmar' onClick={() => window.history.back()}>
-                Voltar
-            </button>
-        </div>
+      })
+      .catch(err => {
+        setErro(err.message || 'Erro inesperado');
+        setCarregando(false);
+      });
+  }, [id]);
 
-      </div>
-    );
+  const handleSelecao = (enderecoId) => {
+    setEnderecoSelecionado(enderecoId);
   };
-  
-  export default Enderecos;
-  
+
+  const handleConfirmar = () => {
+    if (!enderecoSelecionado) {
+      alert("Por favor, selecione um endereço.");
+      return;
+    }
+
+    // Encontrar o endereço selecionado
+    const endereco = enderecos.find(e => e.id === enderecoSelecionado);
+
+    // Enviar PUT para atualizar o endereço
+    put(`EnderecoUsuario/${id}/${endereco.id}/DefinirComoPadrao`)
+      .then(response => {
+        window.history.back();
+      })
+      .catch(err => {
+        setErro(err.message || 'Erro ao atualizar o endereço.');
+      });
+      
+  };
+
+  if (carregando) return <p>Carregando endereços...</p>;
+  if (erro) return <p style={{ color: 'red' }}>{erro}</p>;
+
+  if (!enderecos.length) {
+    return <p>Nenhum endereço cadastrado.</p>;
+  }
+
+  return (
+    <div>
+        <h2>Endereços</h2>
+      <div  style={{ padding: '16px' }}>
+        {enderecos.map(endereco => (
+          <div   className="endereco-selecionado" key={endereco.id} style={{ marginBottom: '10px' }}>
+            <div>
+              <span className="nome">Rua: {endereco.rua}, Num.: {endereco.numero}</span>
+            </div>
+            <div>
+              <span className="nome">Cidade: {endereco.cidade}</span>
+            </div>
+            <div>
+              <span className="nome">Bairro: {endereco.bairro}</span>
+            </div>
+            <div>
+              <span className="nome">CEP: {endereco.cep}</span>
+            </div>
+            <div  style={{ display: 'flex', alignItems: 'center' }}>              
+              <input 
+                type="radio" 
+                name="enderecoSelecionado" 
+                checked={endereco.id === enderecoSelecionado} 
+                onChange={() => handleSelecao(endereco.id)} 
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+      <div>
+        <button className='botao-enderecos' onClick={handleConfirmar}>
+          Confirmar
+        </button>
+        <button className='botao-enderecos' onClick={() => window.history.back()}>
+          Voltar
+        </button>
+      </div>
+    </div>
+  );
+};
+export default Enderecos;
