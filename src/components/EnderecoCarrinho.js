@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Endereco.css';
 import { Link } from 'react-router-dom';
 
-const EnderecoCarrinho = ()=> {
+const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
     const [enderecos, setEnderecos] =useState([]);
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(null);
+
+
 
     useEffect(() => {
         setCarregando(true);
@@ -40,7 +42,7 @@ const EnderecoCarrinho = ()=> {
    
     if (carregando) return <p> Carregando endereços...</p>;
     if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
-
+    onEnderecoSelecionado(enderecoSel);
   
     return (   
       <section className="mais-vendidos">

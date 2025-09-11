@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {get, CODIGO_USUARIO} from '../services/api';
+import {get, post, CODIGO_USUARIO} from '../services/api';
 import CarrinhoItem from '../components/CarrinhoItem';
 import EnderecoCarrinho from '../components/EnderecoCarrinho';
 
 const Carrinhos = () => {
   const [carrinho, setCarrinho] = useState([]);
   const [carregando, setCarregando] = useState(true);
-  const [valorTotal, setValorTotal] = useState(carrinho.valorTotal);
+  const [valorTotal, setValorTotal] = useState(carrinho.valorTotal)
+  const [enderecoSelecionado, setEndereco] = useState(null);
+  const [erro, setErro] = useState(null);
 
   useEffect(() => {
     get(`carrinho/${CODIGO_USUARIO}/RecuperarPorUsuario`)
@@ -27,21 +29,21 @@ const Carrinhos = () => {
 
 
   const handleConfirmar = () => {
-  /*  if (!enderecoSelecionado) {
+    if (!enderecoSelecionado) {
       alert("Por favor, selecione um endereço.");
       return;
     }
     const pedido = {
       CodigoUsuario: `${CODIGO_USUARIO}`,
-      Rua: enderecoSelecionado.Rua,
-      Cidade: enderecoSelecionado.Cidade,
-      Bairro: enderecoSelecionado.Bairro,
-      Complemento: enderecoSelecionado.Complemento,
-      Numero: enderecoSelecionado.Numero,
+      Rua: enderecoSelecionado.rua,
+      Cidade: enderecoSelecionado.cidade,
+      Bairro: enderecoSelecionado.bairro,
+      Complemento: enderecoSelecionado.complemento,
+      Numero: enderecoSelecionado.numero,
       Itens: carrinho.itens.map(item => ({
-        CodigoProduto: item.id,
-        Quantidade: item.Quantidade,
-        PrecoUn: item.PrecoUn
+        CodigoProduto: item.codigoProduto,
+        Quantidade: item.quant,
+        PrecoUn: item.precoUn
       })),
       Total: carrinho.valorTotal
     }
@@ -54,8 +56,13 @@ const Carrinhos = () => {
       .catch(err => {
         setErro(err.message || 'Erro ao inserir pedido.');
       });
-      */
-  };
+    }
+    
+ const handleEnderecoSelecionado = (endereco) => {
+  setEndereco(endereco);;
+};
+
+if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
 if (carregando) return <p>Carregando carrinho...</p>;
 
@@ -79,7 +86,7 @@ return (
         <h3>R$ {valorTotal}</h3>
     </div>
      <div>
-        <EnderecoCarrinho />
+        <EnderecoCarrinho  onEnderecoSelecionado={handleEnderecoSelecionado}/>
         <button className='botao-enderecos' onClick={handleConfirmar}> Confirmar Pedido </button> 
      </div>    
   </div>
