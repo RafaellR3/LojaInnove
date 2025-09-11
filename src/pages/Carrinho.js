@@ -56,6 +56,14 @@ const Carrinhos = () => {
       .catch(err => {
         setErro(err.message || 'Erro ao inserir pedido.');
       });
+
+      delete(`carrinho/LimparCarrinhoUsuario/${CODIGO_USUARIO}`)
+      .then(response => {
+        window.history.back();
+      })
+      .catch(err => {
+        setErro(err.message || 'Erro ao limpar carrinho.');
+      });
     }
     
  const handleEnderecoSelecionado = (endereco) => {

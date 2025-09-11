@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { get, BASE_URL} from '../services/api';
 import '../styles/MaisVendidos.css';
+import { Link } from 'react-router-dom';
 
 const MaisVendidos = () => {
   const [produtos, setProdutos] = useState([]);
@@ -11,7 +12,7 @@ const MaisVendidos = () => {
     setCarregando(true);
     setErro(null);
 
-    get('produto') // faz GET para: https://sua-api.com/api/produtos
+    get('Produto/RecuperarProdutosMaisVendidos')
       .then(data => {
         setProdutos(data);
         setCarregando(false);
@@ -30,11 +31,13 @@ const MaisVendidos = () => {
       <h2>Mais Vendidos</h2>
       <div className="lista-produtos">
         {produtos.map(prod => (
-          <div key={prod.id} className="produto-item">
-            <img src={`${BASE_URL}${prod.urlImagem}`} alt={prod.nome} />
-            <span className="nome">{prod.nome}</span>
-            <span className="preco">R$ {prod.preco.toFixed(2)}</span>
-          </div>
+          <Link to={`/produto/${prod.produto.id}`} className="produto-item-link">
+            <div key={prod.id} className="produto-item">
+              <img src={`${BASE_URL}${prod.urlImagem}`} alt={prod.nome} />
+              <span className="nome">{prod.nome}</span>
+              <span className="preco">R$ {prod.preco.toFixed(2)}</span>
+            </div>
+          </Link>
         ))}
       </div>
     </section>

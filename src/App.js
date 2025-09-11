@@ -9,6 +9,7 @@ import Favoritos from './pages/Favoritos';
 import Perfil from './pages/Perfil';
 import ProdutoDetalhe from './pages/ProdutoDetalhe';
 import Enderecos from './pages/Enderecos';
+import ProdutosPorCategoria from './pages/ProdutosPorCategoria';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/produto/:id" element={<ProdutoDetalhe />} />  
           <Route path="/enderecos/:id" element={<Enderecos />} />  
+          <Route path="/produtoporcategoria" element={<ProdutosPorCategoria />} />  
         </Routes>
       </div>
     </Router>
