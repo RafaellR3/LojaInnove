@@ -22,3 +22,14 @@
 .status{
     color: green;
 }
+button {
+    color: #00327e;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .listaitemspan{
+      font-size: 12px;
+  }

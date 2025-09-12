@@ -1,17 +1,19 @@
+import '../styles/Pedidos.css';
 
-const PedidoDetalhe = ({itens}) =>{
+const PedidoDetalhe = ({pedido}) =>{
     
-    if (!itens) return <p>Nenhum item encontrado</p>;
+    
 
     return(
-        <div className="itenspedido">  
-        {itens.map(item => (
-          <div  className="listaitens" key={item.id} style={{ marginBottom: '10px' }}>
+        <div className="itenspedido" style={{ marginTop: '5px', padding: '10px', border: '1px solid #ddd' }}>  
+        {pedido.itens.map(item => (
+          <div  className="listaitens" key={item.id} style={{ padding: 0, margin: 0, listStyleType: 'none' }}>
               <div>
-                  <span className="nome">Item: {item.produto.nome} - Quant: {item.quant} </span>
+                  <span className="listaitemspan">{item.produto.nome} - Quant: {item.quantidade} </span>
               </div>                            
           </div>
         ))}
+        <button> Comprar novamente</button>
         </div>
     );
 

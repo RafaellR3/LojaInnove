@@ -29,7 +29,7 @@ const MaisVendidos = () => {
   return (
     <section className="mais-vendidos">
       <h2>Mais Vendidos</h2>
-      <div className="lista-produtos">
+      <div className="lista-produtos-maisvendidos">
         {produtos.map(prod => (
           <Link to={`/produto/${prod.id}`} className="produto-item-link">
             <div key={prod.id} className="produto-item">

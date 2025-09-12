@@ -44,7 +44,7 @@ const Header = () => {
           <Link to="/favoritos" onClick={closeMenu} className={location.pathname === '/favoritos' ? 'active' : ''}>
             <FaHeart className="icon" /> Favoritos
           </Link>
-          <Link to="/pedidos" className="menu-toggle" aria-label="Go to pedidos">
+          <Link to="/pedidos" onClick={closeMenu} className={location.pathname === '/pedido' ? 'active' : ''}>
            <FaIndent   className="icon" /> Pedidos
           </Link>
           <Link to="/perfil" onClick={closeMenu} className={location.pathname === '/perfil' ? 'active' : ''}>
