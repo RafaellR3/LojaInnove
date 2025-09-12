@@ -61,9 +61,9 @@ const Enderecos = () => {
   }
 
   return (
-    <div>
+    <div >
         <h2>Endereços</h2>
-      <div  style={{ padding: '16px' }}>
+      <div  style={{ padding: '16px' } } >
         {enderecos.map(endereco => (
           <div   className="endereco-selecionado" key={endereco.id} style={{ marginBottom: '10px' }}>
             <div>
