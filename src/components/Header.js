@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaBoxOpen, FaShoppingCart, FaHeart, FaUser } from 'react-icons/fa';
+import { FaHome, FaBoxOpen, FaShoppingCart, FaHeart, FaUser, FaIndent, FaBars } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
@@ -29,7 +29,7 @@ const Header = () => {
            <FaShoppingCart  />
         </Link>
         <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
-          ☰
+          <FaBars />
         </button>
         <nav className={`nav ${menuAberto ? 'ativo' : ''}`}>
           <Link to="/" onClick={closeMenu} className={location.pathname === '/' ? 'active' : ''}>
@@ -43,6 +43,9 @@ const Header = () => {
           </Link>
           <Link to="/favoritos" onClick={closeMenu} className={location.pathname === '/favoritos' ? 'active' : ''}>
             <FaHeart className="icon" /> Favoritos
+          </Link>
+          <Link to="/pedidos" className="menu-toggle" aria-label="Go to pedidos">
+           <FaIndent   className="icon" /> Pedidos
           </Link>
           <Link to="/perfil" onClick={closeMenu} className={location.pathname === '/perfil' ? 'active' : ''}>
             <FaUser className="icon" /> Perfil
