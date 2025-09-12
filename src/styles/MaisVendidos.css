@@ -22,7 +22,6 @@
     min-width: 180px;
     max-width: 200px;
     flex-shrink: 0;
-    background: #fff;
     border: 1px solid #eee;
     padding: 12px;
     border-radius: 10px;
@@ -60,6 +59,7 @@
     border-radius: 6px;
     margin-bottom: 8px;
     display: block;
+    background-color: #fff;  
   }
   .produto-item-link-maisvendido
   {
@@ -68,7 +68,6 @@
     border-radius: 8px;
     padding: 12px;
     margin-bottom: 12px;
-    background-color: #fff;
     text-align: left;      
     text-decoration: none;  
     color: inherit;     
