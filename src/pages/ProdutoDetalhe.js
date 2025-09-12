@@ -32,7 +32,7 @@ const ProdutoDetalhe = () => {
       });
   }, [id]);  // Recarrega os dados quando o id mudar
 
-  const relacionadosFiltrados = produtosRelacionados.filter(p => p.id !== produto.id);
+  const relacionadosFiltrados = produtosRelacionados.filter((prod => prod.codigoCategoria === produto.codigoCategoria));
 
   const aumentar = () => {
     if (produto && quantidade < produto.estoque) {
