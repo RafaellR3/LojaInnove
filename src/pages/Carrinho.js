@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {get, post, CODIGO_USUARIO} from '../services/api';
+import {get, post, del, CODIGO_USUARIO} from '../services/api';
 import CarrinhoItem from '../components/CarrinhoItem';
 import EnderecoCarrinho from '../components/EnderecoCarrinho';
 
@@ -51,13 +51,12 @@ const Carrinhos = () => {
     // Enviar PUT para atualizar o endereço
     post(`pedido`, pedido)
       .then(response => {
-        window.history.back();
       })
       .catch(err => {
         setErro(err.message || 'Erro ao inserir pedido.');
       });
 
-      delete(`carrinho/LimparCarrinhoUsuario/${CODIGO_USUARIO}`)
+    del(`carrinho/LimparCarrinhoUsuario/${CODIGO_USUARIO}`)
       .then(response => {
         window.history.back();
       })
