@@ -73,7 +73,7 @@ if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
 if (carregando) return <p>Carregando carrinho...</p>;
 
-if (!carrinho){
+if (!carrinho.itens){
   return <p>Carrinho vazio.</p>;
 }
 
