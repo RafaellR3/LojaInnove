@@ -36,7 +36,7 @@ const MaisVendidos = () => {
             <div key={prod.id} className="produto-item-maisvendidos">
               <img src={`${BASE_URL}${prod.urlImagem}`} alt={prod.nome} />
               <span className="nome-maisvendidos">{prod.nome}</span>
-              <span className="preco-maisvendidos">R$ {prod.preco.toFixed(2)}</span>
+              <span className="preco-maisvendidos">R${prod.preco.toFixed(2)}</span>
             </div>
           </Link>
         ))}

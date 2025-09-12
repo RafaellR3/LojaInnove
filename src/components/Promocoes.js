@@ -34,8 +34,8 @@ const Promocoes = () => {
           <div key={prod.produto.id} className="promo-item">
             <img src={`${BASE_URL}${prod.produto.urlImagem}`} alt={prod.nome} />
             <span className="nome">{prod.produto.nome}</span>
-            <span className="preco-original">R$ {prod.valorOriginal.toFixed(2)}</span>
-            <span className="preco-promocional"> R$ {prod.valorPromocao.toFixed(2)}</span>
+            <span className="preco-original">R${prod.valorOriginal.toFixed(2)}</span>
+            <span className="preco-promocional"> R${prod.valorPromocao.toFixed(2)}</span>
           </div>
           </Link>
         ))}

@@ -23,7 +23,7 @@ const PedidosPorStatus = ({ status, pedidos }) => {
   return (
     <div className="pedidos">
       <h3 onClick={toggleExibirPedidos} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-        <span style={{ marginRight: '8px' }}>
+        <span style={{ marginRight: '4px' }}>
           {exibirPedidos ? <FaAngleDoubleDown /> : <FaAngleDoubleRight />}
         </span>
         {status}
