@@ -14,13 +14,13 @@
 
 .pedidos h3{
     color: white;
-    background-color: green;
+    background-color: #00327e;
     padding: 8px;
     border-radius: 4px;
     width: 100%;
 }
 .status{
-    color: green;
+    color: #00327e;
 }
 button {
     color: #00327e;
