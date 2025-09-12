@@ -5,7 +5,7 @@ const PedidoDetalhe = ({pedido}) =>{
     
 
     return(
-        <div className="itenspedido" style={{ marginTop: '5px', padding: '10px', border: '1px solid #ddd' }}>  
+        <div className="itenspedido" style={{ marginTop: '5px', padding: '10px', border: '1px solid #ddd'  }}>  
         {pedido.itens.map(item => (
           <div  className="listaitens" key={item.id} style={{ padding: 0, margin: 0, listStyleType: 'none' }}>
               <div>
@@ -13,7 +13,7 @@ const PedidoDetalhe = ({pedido}) =>{
               </div>                            
           </div>
         ))}
-        <button> Comprar novamente</button>
+        <button class="botaodetalheitem"> Comprar novamente</button>
         </div>
     );
 

@@ -30,6 +30,19 @@ button {
     cursor: pointer;
   }
 
-  .listaitemspan{
-      font-size: 12px;
+.listaitemspan{
+      font-size: 10px;
   }
+.itenspedido{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: lightgray;
+}
+.botaodetalhe{
+    background-color: #00327e;
+    color: white;
+    height: 30px;
+}.botaodetalheitem{
+    background-color: green;
+    color: white;
+    height: 30px;
+}

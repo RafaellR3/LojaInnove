@@ -6,6 +6,7 @@
   .categorias h2 {
     font-size: 1.5rem;
     margin-bottom: 12px;
+    color: #00327e;
   }
   
   /* Container horizontal com scroll */
@@ -45,9 +46,12 @@
   }
   
   .categoria-item span {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     text-align: center;
     font-weight: 500;
+    color: #00327e;
+    font-weight: bold;
+
   }
   
  
