@@ -31,11 +31,11 @@ const MaisVendidos = () => {
       <h2>Mais Vendidos</h2>
       <div className="lista-produtos-maisvendidos">
         {produtos.map(prod => (
-          <Link to={`/produto/${prod.id}`} className="produto-item-link">
-            <div key={prod.id} className="produto-item">
+          <Link to={`/produto/${prod.id}`} className="produto-item-link-maisvendido">
+            <div key={prod.id} className="produto-item-maisvendidos">
               <img src={`${BASE_URL}${prod.urlImagem}`} alt={prod.nome} />
-              <span className="nome">{prod.nome}</span>
-              <span className="preco">R$ {prod.preco.toFixed(2)}</span>
+              <span className="nome-maisvendidos">{prod.nome}</span>
+              <span className="preco-maisvendidos">R$ {prod.preco.toFixed(2)}</span>
             </div>
           </Link>
         ))}
