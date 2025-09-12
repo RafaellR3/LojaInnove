@@ -1,6 +1,7 @@
 import { get, put } from '../services/api';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa';
 
 const Enderecos = () => {
   const { id } = useParams(); 
@@ -53,7 +54,7 @@ const Enderecos = () => {
       
   };
 
-  if (carregando) return <p>Carregando endereços...</p>;
+  if (carregando) return <p>Carregando endereços... <FaSpinner className="spinner" /></p>;
   if (erro) return <p style={{ color: 'red' }}>{erro}</p>;
 
   if (!enderecos.length) {

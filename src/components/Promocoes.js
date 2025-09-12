@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { get, BASE_URL } from '../services/api';
 import '../styles/Promocoes.css';
 import { Link } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa';
 
 const Promocoes = () => {
   const [promocoes, setPromocoes] = useState([]);
@@ -21,7 +22,7 @@ const Promocoes = () => {
       });
   }, []);
 
-  if (carregando) return <p> Carregando promoções...</p>;
+  if (carregando) return <p>Carregando promoções... <FaSpinner className="spinner" /></p>;
   if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
   return (

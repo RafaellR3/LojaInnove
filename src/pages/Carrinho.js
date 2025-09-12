@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {get, post, del, CODIGO_USUARIO} from '../services/api';
 import CarrinhoItem from '../components/CarrinhoItem';
 import EnderecoCarrinho from '../components/EnderecoCarrinho';
+import { FaSpinner } from 'react-icons/fa';
 
 const Carrinhos = () => {
   const [carrinho, setCarrinho] = useState([]);
@@ -71,7 +72,7 @@ const Carrinhos = () => {
 
 if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
-if (carregando) return <p>Carregando carrinho...</p>;
+if (carregando) return <p>Carregando carrinho... <FaSpinner className="spinner" /></p>;
 
 if (!carrinho.itens){
   return <p>Carrinho vazio.</p>;

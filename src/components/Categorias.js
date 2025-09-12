@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { get, BASE_URL } from '../services/api';
 import '../styles/Categorias.css';
 import { useNavigate } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa';
 
 const Categoria = () => {  
 
@@ -22,7 +23,7 @@ const Categoria = () => {
         setCarregando(false);
       });
   }, []);
-  if (carregando) return <p> Carregando categorias...</p>;
+  if (carregando) return <p>Carregando categorias... <FaSpinner className="spinner" /></p>;
   if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
 

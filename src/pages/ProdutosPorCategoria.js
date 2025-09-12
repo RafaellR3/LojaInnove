@@ -3,6 +3,7 @@ import { get, BASE_URL } from '../services/api';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Categorias from '../components/Categorias';
+import { FaSpinner } from 'react-icons/fa';
 
 
 const Produtos = () => {
@@ -24,7 +25,7 @@ const Produtos = () => {
       });
   }, [cat.id]);
 
-  if (carregando) return <p>Carregando produtos...</p>;
+  if (carregando) return <p>Carregando produtos... <FaSpinner className="spinner" /></p>;
 
   return (
     <div> <Categorias />

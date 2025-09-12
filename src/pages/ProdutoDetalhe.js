@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import '../styles/ProdutoDetalhe.css'; 
 import { get, post, BASE_URL, CODIGO_USUARIO } from '../services/api';
+import { FaSpinner } from 'react-icons/fa';
 
 const ProdutoDetalhe = () => {
   const { id } = useParams();  // Captura o id da URL
@@ -70,7 +71,7 @@ const adicionarAoCarrinho = () => {
   };
 
 
-  if (carregando) return <p>Carregando...</p>;
+  if (carregando) return <p>Carregando detalhes<FaSpinner className="spinner" /></p>;
 
   console.log("Produto retornado:", produto);
 

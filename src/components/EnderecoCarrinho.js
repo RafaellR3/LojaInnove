@@ -2,6 +2,7 @@ import { get,CODIGO_USUARIO} from  '../services/api';
 import React, { useEffect, useState } from 'react';
 import '../styles/Endereco.css';
 import { Link } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa';
 
 const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
     const [enderecos, setEnderecos] =useState([]);
@@ -40,7 +41,7 @@ const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
     if (!enderecoSel)
        return <p>Nenhum endereço informado.</p>;
    
-    if (carregando) return <p> Carregando endereços...</p>;
+    if (carregando) return <p>Carregando endereço... <FaSpinner className="spinner" /></p>;
     if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
     onEnderecoSelecionado(enderecoSel);
   

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { get } from '../services/api';
 import CategoriaMenu from '../components/CategoriaMenu';
 import ListaPorCategoria from '../components/ListaPorCategoria';
+import { FaSpinner } from 'react-icons/fa';
 
 
 const Produtos = () => {
@@ -33,7 +34,7 @@ const Produtos = () => {
       });
   }, []);
 
-  if (carregando) return <p>Carregando produtos...</p>;
+  if (carregando) return <p>Carregando produtos... <FaSpinner className="spinner" /></p>;
 
   return (
     <div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { get, BASE_URL} from '../services/api';
 import '../styles/MaisVendidos.css';
 import { Link } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa';
 
 const MaisVendidos = () => {
   const [produtos, setProdutos] = useState([]);
@@ -23,7 +24,7 @@ const MaisVendidos = () => {
       });
   }, []);
 
-  if (carregando) return <p> Carregando produtos...</p>;
+  if (carregando) return <p>Carregando mais vendidos... <FaSpinner className="spinner" /></p>;
   if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
   return (

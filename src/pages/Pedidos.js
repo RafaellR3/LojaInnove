@@ -1,6 +1,7 @@
 import {get, CODIGO_USUARIO} from '../services/api';
 import React, { useEffect, useState } from 'react';
 import PedidosPorStatus from '../components/PedidosPorStatus.js';
+import { FaSpinner } from 'react-icons/fa';
 
 const Pedidos =() => {
     const [pedidos, setPedidos] = useState(null);
@@ -20,7 +21,7 @@ const Pedidos =() => {
     
   }, []);
 
-    if (carregando) return <p>Carregando pedidos...</p>;
+  if (carregando) return <p>Carregando pedidos... <FaSpinner className="spinner" /></p>;
     if (!pedidos) return <p>Nenhum pedido encontrado</p>;
 
     const pedidosCriados = pedidos.filter(p => p.status === 0);
