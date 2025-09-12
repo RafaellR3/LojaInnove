@@ -28,9 +28,7 @@ const Header = () => {
         <Link to="/carrinho" className="menu-toggle" aria-label="Go to cart">
            <FaShoppingCart  />
         </Link>
-        <Link to="/acompanhar/42ec6f78-79b8-4944-8efe-6779f95b80ba" className="menu-toggle" aria-label="Go to cart">
-           Teste
-        </Link>
+    
         <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
           <FaBars />
         </button>
@@ -53,6 +51,9 @@ const Header = () => {
           <Link to="/perfil" onClick={closeMenu} className={location.pathname === '/perfil' ? 'active' : ''}>
             <FaUser className="icon" /> Perfil
           </Link>
+          <Link to="/acompanhar/42ec6f78-79b8-4944-8efe-6779f95b80ba" onClick={closeMenu} className={location.pathname === '/acompanhar/42ec6f78-79b8-4944-8efe-6779f95b80ba' ? 'active' : ''}>
+           Teste
+        </Link>
         </nav>
       </div>
     </header>
