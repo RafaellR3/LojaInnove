@@ -11,6 +11,7 @@ import ProdutoDetalhe from './pages/ProdutoDetalhe';
 import Enderecos from './pages/Enderecos';
 import ProdutosPorCategoria from './pages/ProdutosPorCategoria';
 import Pedidos from './pages/Pedidos';
+import AcompanharPedido from './pages/AcompanharPedido';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/enderecos/:id" element={<Enderecos />} />  
           <Route path="/produtoporcategoria" element={<ProdutosPorCategoria />} />  
           <Route path="/pedidos" element={<Pedidos />} />  
+          <Route path="/acompanhar/:pedidoid" element={<AcompanharPedido />} /> 
         </Routes>
       </div>
     </Router>

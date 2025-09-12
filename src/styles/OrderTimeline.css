@@ -1,0 +1,58 @@
+.timeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin: 40px;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: lightgray;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.circle.completed {
+  background-color: #4caf50;
+  color: white;
+}
+
+.label {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.label.completed {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.line {
+  width: 40px;
+  height: 4px;
+  background-color: lightgray;
+  margin: 0 10px;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.line.completed {
+  background-color: #4caf50;
+}
