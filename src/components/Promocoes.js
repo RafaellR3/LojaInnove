@@ -30,7 +30,7 @@ const Promocoes = () => {
       <div className="lista-promocoes">
         {promocoes.map(prod => (
           <Link to={`/produto/${prod.produto.id}`} className="produto-item-link">
-          <div key={prod.produto.id} className="produto-item">
+          <div key={prod.produto.id} className="promo-item">
             <img src={`${BASE_URL}${prod.produto.urlImagem}`} alt={prod.nome} />
             <span className="nome">{prod.produto.nome}</span>
             <span className="preco-original">R$ {prod.valorOriginal.toFixed(2)}</span>
