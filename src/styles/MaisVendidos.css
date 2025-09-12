@@ -19,15 +19,16 @@
   }
   
   .produto-item-maisvendidos {
-    
-    max-width: 20;
+    min-width: 180px;
+    max-width: 200px;
     flex-shrink: 0;
-    background: #f9fafb;
+    background: #fff;
+    border: 1px solid #eee;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     text-align: center;
-    scroll-snap-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    scroll-snap-align: start;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     
   }
   

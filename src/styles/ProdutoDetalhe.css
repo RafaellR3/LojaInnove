@@ -95,6 +95,7 @@
   
   .produto-imagem-detalhe img {
     width: 100%;
+    max-width: 200px;
     height: auto;
   }
   
@@ -156,4 +157,5 @@
 
 .compartilhar button:hover {
   background-color: #00327e;
+  color: white;
 }
