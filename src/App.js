@@ -28,7 +28,7 @@ function App() {
           <Route path="/enderecos/:id" element={<Enderecos />} />  
           <Route path="/produtoporcategoria" element={<ProdutosPorCategoria />} />  
           <Route path="/pedidos" element={<Pedidos />} />  
-          <Route path="/acompanhar/:pedidoid" element={<AcompanharPedido />} /> 
+          <Route path="/acompanhar" element={<AcompanharPedido />} /> 
         </Routes>
       </div>
     </Router>

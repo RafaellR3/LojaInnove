@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaBoxOpen, FaShoppingCart, FaHeart, FaUser, FaIndent, FaBars } from 'react-icons/fa';
+import { FaHome, FaBoxOpen, FaShoppingCart, FaHeart, FaUser, FaIndent, FaBars,FaHistory  } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
@@ -51,9 +51,9 @@ const Header = () => {
           <Link to="/perfil" onClick={closeMenu} className={location.pathname === '/perfil' ? 'active' : ''}>
             <FaUser className="icon" /> Perfil
           </Link>
-          <Link to="/acompanhar/42ec6f78-79b8-4944-8efe-6779f95b80ba" onClick={closeMenu} className={location.pathname === '/acompanhar/42ec6f78-79b8-4944-8efe-6779f95b80ba' ? 'active' : ''}>
-           Teste
-        </Link>
+          <Link to="/acompanhar" onClick={closeMenu} className={location.pathname === '/acompanhar/42ec6f78-79b8-4944-8efe-6779f95b80ba' ? 'active' : ''}>
+            <FaHistory    className="icon" /> Acompanhar pedidos
+          </Link>
         </nav>
       </div>
     </header>

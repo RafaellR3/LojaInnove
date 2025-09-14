@@ -3,6 +3,7 @@ import {get, post, del, CODIGO_USUARIO} from '../services/api';
 import CarrinhoItem from '../components/CarrinhoItem';
 import EnderecoCarrinho from '../components/EnderecoCarrinho';
 import { FaSpinner } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Carrinhos = () => {
   const [carrinho, setCarrinho] = useState([]);
@@ -10,6 +11,7 @@ const Carrinhos = () => {
   const [valorTotal, setValorTotal] = useState(carrinho.valorTotal)
   const [enderecoSelecionado, setEndereco] = useState(null);
   const [erro, setErro] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     get(`carrinho/${CODIGO_USUARIO}/RecuperarPorUsuario`)
@@ -52,14 +54,15 @@ const Carrinhos = () => {
     // Enviar PUT para atualizar o endereço
     post(`pedido`, pedido)
       .then(response => {
+         alert(`Pedido cadastrado com sucesso. Número do pedido: ${response.CodigoErp}`);
       })
       .catch(err => {
         setErro(err.message || 'Erro ao inserir pedido.');
       });
 
     del(`carrinho/LimparCarrinhoUsuario/${CODIGO_USUARIO}`)
-      .then(response => {
-        window.history.back();
+      .then(response => {        
+        navigate('/acompanhar');
       })
       .catch(err => {
         setErro(err.message || 'Erro ao limpar carrinho.');
