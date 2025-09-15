@@ -15,7 +15,9 @@ const Header = () => {
       <div className="container">
         <Link to="/" onClick={closeMenu} className="logo-link">
           <img src="images/logobranca.png" alt="Loja Innove" className="logo" />
-        </Link>        
+        </Link>   
+      </div>
+      <div className="container">     
         <Link to="/" className="menu-toggle" aria-label="Go to favorites">
            <FaHome   />
         </Link>        
@@ -51,8 +53,8 @@ const Header = () => {
           <Link to="/perfil" onClick={closeMenu} className={location.pathname === '/perfil' ? 'active' : ''}>
             <FaUser className="icon" /> Perfil
           </Link>
-          <Link to="/acompanhar" onClick={closeMenu} className={location.pathname === '/acompanhar/42ec6f78-79b8-4944-8efe-6779f95b80ba' ? 'active' : ''}>
-            <FaHistory    className="icon" /> Acompanhar pedidos
+          <Link to="/rastrear" onClick={closeMenu} className={location.pathname === '/rastrear' ? 'active' : ''}>
+            <FaHistory    className="icon" /> Rastrear
           </Link>
         </nav>
       </div>

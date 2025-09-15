@@ -42,6 +42,7 @@ export async function post(endpoint, body, auth = false) {
       const errorText = await res.text();
       throw new Error(`POST ${endpoint} falhou: ${res.status} - ${errorText}`);
     }
+    return res.json();
   } 
 
   export async function put(endpoint, body, auth = false) {

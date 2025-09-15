@@ -31,11 +31,16 @@ const Carrinhos = () => {
   }
 
 
-  const handleConfirmar = () => {
+  const handleConfirmar =async () => {
     if (!enderecoSelecionado) {
       alert("Por favor, selecione um endereço.");
       return;
     }
+
+    if (!window.confirm("Tem certeza que deseja cofirmar o pedido?")){
+      return;
+    }
+
     const pedido = {
       CodigoUsuario: `${CODIGO_USUARIO}`,
       Rua: enderecoSelecionado.rua,
@@ -51,23 +56,18 @@ const Carrinhos = () => {
       Total: carrinho.valorTotal
     }
 
-    // Enviar PUT para atualizar o endereço
-    post(`pedido`, pedido)
-      .then(response => {
-         alert(`Pedido cadastrado com sucesso. Número do pedido: ${response.CodigoErp}`);
-      })
-      .catch(err => {
-        setErro(err.message || 'Erro ao inserir pedido.');
-      });
-
-    del(`carrinho/LimparCarrinhoUsuario/${CODIGO_USUARIO}`)
-      .then(response => {        
-        navigate('/acompanhar');
-      })
-      .catch(err => {
-        setErro(err.message || 'Erro ao limpar carrinho.');
-      });
-    }
+    try {
+        const response = await post(`pedido`, pedido);
+        console.log(`Pedido cadastrado com sucesso: ${response.codigoErp}`);
+        alert(`Pedido cadastrado com sucesso. Número do pedido: ${response.codigoErp}`);
+    
+        await del(`carrinho/LimparCarrinhoUsuario/${CODIGO_USUARIO}`);
+    
+        navigate('/rastrear');
+      } catch (err) {
+        setErro(err.message || 'Erro ao inserir pedido ou limpar carrinho.');
+      }
+  }
     
  const handleEnderecoSelecionado = (endereco) => {
   setEndereco(endereco);;

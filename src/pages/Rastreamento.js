@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { FaSpinner} from 'react-icons/fa';
 
 
-const AcompanharPedido =()=>{
+const Rastrear =()=>{
     const [pedidos, setPedidos] =useState();
     const [carregando, setCarregando] = useState(true); 
 
@@ -15,11 +15,10 @@ const AcompanharPedido =()=>{
             setCarregando(false) 
             .catch(err => console.error('Erro ao buscar pedido.', err));
         })
-        .catch(erro => {
-            console.error(erro)
+        .catch(err => {
+            console.error(err)
             setCarregando(false)
         })
-
     }, []);
 
     const steps = [
@@ -34,7 +33,7 @@ const AcompanharPedido =()=>{
     
     const pedidosOrdenados = [...pedidos].sort((a, b) => new Date(b.data) - new Date(a.data));
 return (
-    <div>
+    <div className="page-rastrear">
       {pedidosOrdenados.map((pedido) => (
         <div className="acompanhar-pedido" key={pedido.id || pedido.codigoErp}>
           <h5>
@@ -61,4 +60,4 @@ return (
   );
 };
 
-export default AcompanharPedido;
+export default Rastrear;

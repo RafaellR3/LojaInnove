@@ -11,7 +11,7 @@ import ProdutoDetalhe from './pages/ProdutoDetalhe';
 import Enderecos from './pages/Enderecos';
 import ProdutosPorCategoria from './pages/ProdutosPorCategoria';
 import Pedidos from './pages/Pedidos';
-import AcompanharPedido from './pages/AcompanharPedido';
+import Rastreamento from './pages/Rastreamento';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
           <Route path="/enderecos/:id" element={<Enderecos />} />  
           <Route path="/produtoporcategoria" element={<ProdutosPorCategoria />} />  
           <Route path="/pedidos" element={<Pedidos />} />  
-          <Route path="/acompanhar" element={<AcompanharPedido />} /> 
+          <Route path="/rastrear" element={<Rastreamento />} /> 
         </Routes>
       </div>
     </Router>

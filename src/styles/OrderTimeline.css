@@ -1,13 +1,21 @@
-.timeline-container {
+.page-rastrear{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-  margin: 40px;
+  justify-content: start;   /* Centraliza horizontalmente */
+  align-items: center;       /* Centraliza verticalmente */
+  height: 100vh;             /* Altura da viewport */
+  flex-direction: column;    /* Se tiver mais de um item */
+  padding-top: 50px;
 }
 
-.acomanhar-pedido {
-  
+.timeline-container {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente se necessário */
+  gap: 16px;               /* espaçamento entre os steps */
+  margin-top: 16px;        /* opcional: espaçamento superior */
+}
+
+.acomanhar-pedido {  
   align-items: center;
   justify-content: center;
   gap: 50px;
@@ -35,7 +43,7 @@
   justify-content: center;
   font-weight: bold;
   z-index: 1;
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .circle.completed {
