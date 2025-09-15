@@ -10,13 +10,15 @@ const Carrinhos = () => {
   const [carregando, setCarregando] = useState(true);
   const [valorTotal, setValorTotal] = useState(carrinho.valorTotal)
   const [enderecoSelecionado, setEndereco] = useState(null);
-  const [erro, setErro] = useState(null);
+  const [erro, setErro] = useState(null);  
+  const [carrinhoItens, setCarrinhoItens] = useState(carrinho.itens);
   const navigate = useNavigate();
 
   useEffect(() => {
     get(`carrinho/${CODIGO_USUARIO}/RecuperarPorUsuario`)
     .then(data => {
-      setCarrinho (data);
+      setCarrinho (data);      
+      setCarrinhoItens (data.itens);
       setValorTotal(data.valorTotal);
       setCarregando(false);
     })
@@ -30,7 +32,10 @@ const Carrinhos = () => {
     setValorTotal(valor);
   }
 
-
+  const atualizaCarrinhoItens = (itens) =>{
+    setCarrinhoItens(itens)
+  }
+  
   const handleConfirmar =async () => {
     if (!enderecoSelecionado) {
       alert("Por favor, selecione um endereço.");
@@ -77,18 +82,15 @@ if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
 if (carregando) return <p>Carregando carrinho... <FaSpinner className="spinner" /></p>;
 
-if (!carrinho.itens){
-  return <p>Carrinho vazio.</p>;
-}
-
 return (    
   <div style={{ padding: '16px' }}>
     <div>    
-        {carrinho.itens.map(item => (
+        {carrinhoItens.map(item => (
           <CarrinhoItem
             key={item}
             carrinhoItem={item}
             onAtualizarCarrinho={atualizarCarrinho}
+            onAtualizaCarrinhoItens={atualizaCarrinhoItens}
           />
         ))}
     </div>

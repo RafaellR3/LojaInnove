@@ -2,7 +2,7 @@ import React, {useState}  from 'react';
 import '../styles/CarrinhoItem.css';
 import { put, del, BASE_URL} from '../services/api';
 
-const CarrinhoItem = ({ carrinhoItem, onAtualizarCarrinho }) => {
+const CarrinhoItem = ({ carrinhoItem, onAtualizarCarrinho, onAtualizaCarrinhoItens }) => {
 const [quantidade, setQuantidade] = useState(carrinhoItem.quant);
 
     const aumentar = () => {
@@ -37,8 +37,11 @@ const [quantidade, setQuantidade] = useState(carrinhoItem.quant);
     };      
     
     const removerDoCarrinho = () => {
-      del('Carrinho/RemoverItem', carrinhoItem.id)
-      .then(data => {onAtualizarCarrinho()})
+      if (!window.confirm("Tem certeza que deseja remover o item do carrinho?")){
+            return;
+        }
+      del(`Carrinho/RemoverItem/${carrinhoItem.id}`)
+      .then(data => {onAtualizaCarrinhoItens(data.itens); onAtualizarCarrinho(data.valorTotal)})
       .catch(err => {
         console.error("Erro ao remover do carrinho:", err);
         alert("Ocorreu um erro ao remover o produto do carrinho.");
