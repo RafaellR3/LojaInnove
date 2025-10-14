@@ -1,16 +1,18 @@
-import {get, CODIGO_USUARIO} from '../services/api';
-import React, { useEffect, useState } from 'react';
+import {get} from '../services/api';
+import { useEffect, useState, useContext } from 'react';
 import PedidosPorStatus from '../components/PedidosPorStatus.js';
 import { FaSpinner} from 'react-icons/fa';
 import { FiRefreshCw } from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../components/AuthContext";
 
 const Pedidos =() => {
     const [pedidos, setPedidos] = useState(null);
     const [carregando, setCarregando] = useState(true);
+    const { usuario } = useContext(AuthContext);
 
     useEffect(() => {
-        get(`pedido/${CODIGO_USUARIO}/PedidosPorUsuario`)
+        get(`pedido/${usuario.response.id}/PedidosPorUsuario`)
         .then( data => {
             setPedidos(data)
             setCarregando(false)
@@ -21,10 +23,11 @@ const Pedidos =() => {
             setCarregando(false)
         })
     
-  }, []);
+  }, [usuario.response?.id]);
+
   const atualizar = () =>{
         setCarregando(true);
-        get(`pedido/${CODIGO_USUARIO}/PedidosPorUsuario`)
+        get(`pedido/${usuario.response.id}/PedidosPorUsuario`)
         .then( data => {
             setPedidos(data)
             setCarregando(false)

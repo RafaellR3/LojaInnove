@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import {get, post, del, CODIGO_USUARIO} from '../services/api';
+import { useState, useEffect,useContext } from 'react';
+import {get, post, del} from '../services/api';
 import CarrinhoItem from '../components/CarrinhoItem';
 import EnderecoCarrinho from '../components/EnderecoCarrinho';
 import { FaSpinner } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from "../components/AuthContext";
 
 const Carrinhos = () => {
   const [carrinho, setCarrinho] = useState([]);
@@ -12,10 +13,11 @@ const Carrinhos = () => {
   const [enderecoSelecionado, setEndereco] = useState(null);
   const [erro, setErro] = useState(null);  
   const [carrinhoItens, setCarrinhoItens] = useState(carrinho.itens);
-  const navigate = useNavigate();
+  const navigate = useNavigate();   
+  const { usuario } = useContext(AuthContext);
 
   useEffect(() => {
-    get(`carrinho/${CODIGO_USUARIO}/RecuperarPorUsuario`)
+    get(`carrinho/${usuario.response.id}/RecuperarPorUsuario`)
     .then(data => {
       setCarrinho (data);      
       setCarrinhoItens (data.itens);
@@ -26,7 +28,7 @@ const Carrinhos = () => {
       console.error(err);
       setCarregando(false);
     });
-    }, []);
+    }, [usuario.response?.id]);
 
   const atualizarCarrinho = (valor) => {
     setValorTotal(valor);
@@ -47,7 +49,7 @@ const Carrinhos = () => {
     }
 
     const pedido = {
-      CodigoUsuario: `${CODIGO_USUARIO}`,
+      CodigoUsuario: `${usuario.response.id}`,
       Rua: enderecoSelecionado.rua,
       Cidade: enderecoSelecionado.cidade,
       Bairro: enderecoSelecionado.bairro,
@@ -66,7 +68,7 @@ const Carrinhos = () => {
         console.log(`Pedido cadastrado com sucesso: ${response.codigoErp}`);
         alert(`Pedido cadastrado com sucesso. Número do pedido: ${response.codigoErp}`);
     
-        await del(`carrinho/LimparCarrinhoUsuario/${CODIGO_USUARIO}`);
+        await del(`carrinho/LimparCarrinhoUsuario/${usuario.response.id}`);
     
         navigate('/rastrear');
       } catch (err) {
@@ -81,6 +83,9 @@ const Carrinhos = () => {
 if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
 
 if (carregando) return <p>Carregando carrinho... <FaSpinner className="spinner" /></p>;
+
+if (!carrinhoItens || carrinhoItens.length === 0)
+  return <p>Seu carrinho está vazio.</p>;
 
 return (    
   <div style={{ padding: '16px' }}>

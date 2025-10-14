@@ -22,3 +22,15 @@
 span, input{
     margin: 10px;
 }
+
+.botao-add{
+    background-color: #00327e;
+    color: white;
+}
+
+.endereco-link {
+    text-align: center;
+    text-decoration: none;  
+    color: white;
+    font-size: 0.9rem;  
+  }

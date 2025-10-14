@@ -12,23 +12,28 @@ import Enderecos from './pages/Enderecos';
 import ProdutosPorCategoria from './pages/ProdutosPorCategoria';
 import Pedidos from './pages/Pedidos';
 import Rastreamento from './pages/Rastreamento';
+import Login from './pages/Login';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
     <Router>
       <Header />
       <div className="page-content" style={{ padding: '16px' }}>
-        <Routes>
+        <Routes>        
+          <Route path="/login" element={<Login />} />
+          <Route path="/carrinho" element={ <PrivateRoute> <Carrinho  /> </PrivateRoute>  }/>
+          <Route path="/favoritos" element={<PrivateRoute> <Favoritos /></PrivateRoute> } />
+          <Route path="/perfil" element={<PrivateRoute> <Perfil /></PrivateRoute> } />
+          <Route path="/enderecos/:id" element={<PrivateRoute> <Enderecos /></PrivateRoute> } />  
+          <Route path="/pedidos" element={<PrivateRoute> <Pedidos /></PrivateRoute> } />  
+          <Route path="/rastrear" element={<PrivateRoute> <Rastreamento /></PrivateRoute> } /> 
+              
+         
           <Route path="/" element={<Home />} />
           <Route path="/produtos" element={<Produtos />} />
-          <Route path="/carrinho" element={<Carrinho />} />
-          <Route path="/favoritos" element={<Favoritos />} />
-          <Route path="/perfil" element={<Perfil />} />
           <Route path="/produto/:id" element={<ProdutoDetalhe />} />  
-          <Route path="/enderecos/:id" element={<Enderecos />} />  
           <Route path="/produtoporcategoria" element={<ProdutosPorCategoria />} />  
-          <Route path="/pedidos" element={<Pedidos />} />  
-          <Route path="/rastrear" element={<Rastreamento />} /> 
         </Routes>
       </div>
     </Router>

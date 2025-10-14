@@ -1,21 +1,22 @@
-import { get,CODIGO_USUARIO} from  '../services/api';
-import React, { useEffect, useState } from 'react';
+import { get} from  '../services/api';
+import { useEffect, useState, useContext } from 'react';
 import '../styles/Endereco.css';
 import { Link } from 'react-router-dom';
 import { FaSpinner } from 'react-icons/fa';
+import { AuthContext } from "./AuthContext";
 
 const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
     const [enderecos, setEnderecos] =useState([]);
     const [carregando, setCarregando] = useState(true);
-    const [erro, setErro] = useState(null);
+    const [erro, setErro] = useState(null);    
+    const { usuario } = useContext(AuthContext);
 
 
 
     useEffect(() => {
         setCarregando(true);
         setErro(null);
-    
-        get(`EnderecoUsuario/${CODIGO_USUARIO}/RecuperarPorUsuario`) 
+        get(`EnderecoUsuario/${usuario.response.id}/RecuperarPorUsuario`) 
           .then(data => {
             setEnderecos(data);
             setCarregando(false);
@@ -24,7 +25,7 @@ const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
             setErro(err.message || 'Erro inesperado');
             setCarregando(false);
           });
-      }, []);
+      }, [usuario.response?.id]);
     
     if (!enderecos)
         return <p>Nenhum endereço informado.</p>;
@@ -39,7 +40,12 @@ const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
     }
    
     if (!enderecoSel)
-       return <p>Nenhum endereço informado.</p>;
+       return (
+      <div> 
+        <p>Nenhum endereço informado.</p>
+        <button className='botao-add'><Link to={`/enderecos/${usuario.id}`} className='endereco-link'>Adicionar Endereço</Link></button>
+      </div>
+       );
    
     if (carregando) return <p>Carregando endereço... <FaSpinner className="spinner" /></p>;
     if (erro) return <p style={{ color: 'red' }}> {erro}</p>;
