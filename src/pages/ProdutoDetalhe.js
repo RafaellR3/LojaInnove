@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import '../styles/ProdutoDetalhe.css'; 
-import { get, post, BASE_URL, CODIGO_USUARIO } from '../services/api';
+import { get, post, BASE_URL } from '../services/api';
 import { FaSpinner } from 'react-icons/fa';
+import { AuthContext } from "../components/AuthContext";
 
 const ProdutoDetalhe = () => {
   const { id } = useParams();  // Captura o id da URL
@@ -10,10 +11,10 @@ const ProdutoDetalhe = () => {
   const [carregando, setCarregando] = useState(true);
   const [quantidade, setQuantidade] = useState(1);
   const [produtosRelacionados, setProdutosRelacionados] = useState([]); 
-  const navigate = useNavigate();  // Hook de navegação
+  const navigate = useNavigate();
+  const { usuario } = useContext(AuthContext);
 
   useEffect(() => {
-    // Supondo que você tenha uma função para buscar o produto por id
     get(`produto/${id}/pesquisarporid`)
       .then(data => {
         if (!data || !data.id) {
@@ -22,7 +23,6 @@ const ProdutoDetalhe = () => {
         setProduto(data);
         setCarregando(false);
 
-        // Buscar produtos relacionados (exemplo de como pode ser feito)
         get('produto')
           .then(relacionados => setProdutosRelacionados(relacionados))
           .catch(err => console.error('Erro ao buscar produtos relacionados:', err));
@@ -53,7 +53,7 @@ const adicionarAoCarrinho = () => {
       Quant: quantidade,
       PrecoUn: produto.preco,
       ValorTotal: quantidade * produto.preco,
-      CodigoUsuario: `${CODIGO_USUARIO}`,
+      CodigoUsuario: `${usuario.response.id}`,
     };
 
     // Fazendo a requisição POST para adicionar o produto ao carrinho

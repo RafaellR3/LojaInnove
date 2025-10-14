@@ -1,5 +1,4 @@
 export const BASE_URL = 'https://appinnove.onrender.com/'; 
-export const CODIGO_USUARIO = '0871a0b6-2bc3-4ff9-ac1a-0e829d587508'; 
 /**
  * Faz uma requisição GET para a API base + endpoint informado
  * @param {string} endpoint - Caminho da rota (ex: '/produtos')
@@ -40,7 +39,7 @@ export async function post(endpoint, body, auth = false) {
   
     if (!res.ok) {
       const errorText = await res.text();
-      throw new Error(`POST ${endpoint} falhou: ${res.status} - ${errorText}`);
+      alert(`Erro: ${errorText}`);
     }
     return res.json();
   } 

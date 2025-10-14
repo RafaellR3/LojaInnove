@@ -1,15 +1,17 @@
 import "../styles/OrderTimeline.css";
-import {CODIGO_USUARIO, get} from '../services/api';
-import { useEffect, useState } from 'react';
+import { get} from '../services/api';
+import { useEffect, useState,useContext } from 'react';
 import { FaSpinner} from 'react-icons/fa';
+import { AuthContext } from "../components/AuthContext";
 
 
 const Rastrear =()=>{
     const [pedidos, setPedidos] =useState();
     const [carregando, setCarregando] = useState(true); 
+    const { usuario } = useContext(AuthContext);
 
     useEffect(() => {
-        get(`pedido/${CODIGO_USUARIO}/PedidosEmAbertoPorUsuario`)
+        get(`pedido/${usuario.response.id}/PedidosEmAbertoPorUsuario`)
         .then( data => {
             setPedidos(data)
             setCarregando(false) 
@@ -19,7 +21,7 @@ const Rastrear =()=>{
             console.error(err)
             setCarregando(false)
         })
-    }, []);
+    }, [usuario.response?.id]);
 
     const steps = [
       { value: 0, label: "Criado" },

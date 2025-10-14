@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link, useLocation,useNavigate  } from 'react-router-dom';
 import { FaHome, FaBoxOpen, FaShoppingCart, FaHeart, FaUser, FaIndent, FaBars,FaHistory  } from 'react-icons/fa';
+import { FiLogIn, FiLogOut  } from 'react-icons/fi';
 import './Header.css';
+import { AuthContext} from "./AuthContext";
 
 const Header = () => {
   const [menuAberto, setMenuAberto] = useState(false);
-  const location = useLocation();
+  const location = useLocation();  
+  const { usuario } = useContext(AuthContext);  
+  const { logout } = useContext(AuthContext);  
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+    const confirmar = window.confirm("Tem certeza que deseja sair?");
+    if (confirmar) {
+      logout();
+      navigate("/login");
+    }
+  };
 
   const toggleMenu = () => setMenuAberto(!menuAberto);
   const closeMenu = () => setMenuAberto(false);
@@ -30,6 +43,16 @@ const Header = () => {
         <Link to="/carrinho" className="menu-toggle" aria-label="Go to cart">
            <FaShoppingCart  />
         </Link>
+
+        {usuario ? (
+          <button onClick={handleLogout} className="menu-toggle" aria-label="Sair">
+            <FiLogOut />
+          </button>
+        ) : (
+          <Link to="/login" className="menu-toggle" aria-label="Entrar">
+            <FiLogIn />
+          </Link>
+        )}
     
         <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
           <FaBars />
