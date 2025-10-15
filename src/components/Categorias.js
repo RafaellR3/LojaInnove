@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { get, BASE_URL } from '../services/api';
 import '../styles/Categorias.css';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +35,7 @@ const Categoria = () => {
            <div
               key={index}
               className="categoria-item"
-              onClick={() => navigate('/produtoporcategoria', { state: { cat } })}
+              onClick={() => navigate('/produtoporcategoria', { state: { cat: cat, categorias: categorias } })}
               style={{ cursor: 'pointer' }} // muda o cursor para indicar clique
             >
             <img src={`${BASE_URL}/${cat.urlImagem}`} alt={cat.nome} />

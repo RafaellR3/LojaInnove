@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { get } from '../services/api';
 import CategoriaMenu from '../components/CategoriaMenu';
 import ListaPorCategoria from '../components/ListaPorCategoria';
 import { FaSpinner } from 'react-icons/fa';
+import '../styles/Produto.css';
 
 
 const Produtos = () => {
@@ -38,6 +39,7 @@ const Produtos = () => {
 
   return (
     <div>
+      <h2>Lista de produtos</h2>
       <CategoriaMenu categorias={categorias} />
       <div style={{ padding: '16px' }}>
         {categorias.map(categoria => (

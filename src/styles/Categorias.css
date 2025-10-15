@@ -1,36 +1,32 @@
 .categorias {
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 0 0px;
   }
   
   .categorias h2 {
     font-size: 1.5rem;
-    margin-bottom: 12px;
-    color: #00327e;
+    margin-bottom: 8px;
+    color: white;
   }
   
   /* Container horizontal com scroll */
-  .lista-categorias {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    scroll-snap-type: x mandatory;
-    align-items: center;
-    justify-content: space-between;
-  }
+ .lista-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  padding: 8px;
+}
   
   .categoria-item {
-    min-width: 100px;
     flex-shrink: 0; 
     display: flex;         
-    scroll-snap-align: start;
     flex: 1; 
     flex-direction: column;
     align-items: center;
     background: #f3f4f6;
-    padding: 12px;
     border-radius: 4px;
     transition: background 0.5s;
+    height: 120px;
   }
   
   .categoria-item:hover {
@@ -38,8 +34,8 @@
   }
   
   .categoria-item img {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 8px;

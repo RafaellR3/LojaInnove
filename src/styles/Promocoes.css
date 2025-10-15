@@ -6,7 +6,7 @@
   .promocoes h2 {
     font-size: 1.5rem;
     margin-bottom: 12px;
-    color: #00327e;
+    color: white;
   }
   
   .lista-promocoes {
@@ -64,6 +64,6 @@
   border-radius: 6px;
   margin-bottom: 8px;
   display: block;
-  background-color: #fff;       /* evita fundo estranho em imagens com transparência */
+  background-color: #00327e;       /* evita fundo estranho em imagens com transparência */
 }
   

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { get, BASE_URL } from '../services/api';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Categorias from '../components/Categorias';
+import CategoriaMenu from '../components/CategoriaMenu';
 import { FaSpinner } from 'react-icons/fa';
 
 
 const Produtos = () => {
   const location = useLocation();
-  const { cat } = location.state || {};
+  const { cat, categorias } = location.state || {};
 
   const [produtos, setProdutos] = useState([]);
   const [carregando, setCarregando] = useState(true);
@@ -28,7 +28,8 @@ const Produtos = () => {
   if (carregando) return <p>Carregando produtos... <FaSpinner className="spinner" /></p>;
 
   return (
-    <div> <Categorias />
+    <div> 
+      <CategoriaMenu categorias={categorias} />
       <h3>{cat.nome}</h3>
       <div style={{ padding: '16px' }}>
         {produtos.map(produto => (
