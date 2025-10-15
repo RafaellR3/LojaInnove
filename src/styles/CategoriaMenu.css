@@ -1,11 +1,12 @@
+
+  
   .categoria-menu {
     display: flex;
     flex-wrap: nowrap;          /* impede quebra de linha */
     overflow-x: auto;           /* ativa rolagem horizontal */
     gap: 5px;                  /* espaçamento entre os itens */
     padding: 10px;
-    scroll-behavior: smooth;    /* rolagem suave */
-    scrollbar-width: thin;      /* scrollbar mais discreta no Firefox */
+    scroll-behavior: smooth;
   }
 
   .categoria-link {

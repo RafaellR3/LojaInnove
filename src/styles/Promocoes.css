@@ -1,53 +1,52 @@
-.promocoes {
-    margin: 20px 0;
+  .promocoes {
     padding: 0 12px;
   }
   
   .promocoes h2 {
     font-size: 1.5rem;
-    margin-bottom: 12px;
     color: white;
   }
   
   .lista-promocoes {
     display: flex;
-    gap: 16px;
+    gap: 5px;
     overflow-x: auto;
-    padding-bottom: 8px;
     scroll-snap-type: x mandatory;
   }
   
   .promo-item {
-    min-width: 180px;
+    min-width: 80px;
     max-width: 200px;
     flex-shrink: 0;
-    border: 1px solid #eee;
     padding: 12px;
     border-radius: 10px;
     text-align: center;
     scroll-snap-align: start;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    justify-content: center;
   }
   
   .promo-item img {
     width: 100%;
-    height: 120px;
     object-fit: cover;
     border-radius: 6px;
-    margin-bottom: 10px;
+    max-width: 140px;
+    height: 120px;                /* força mesma altura */
+    object-fit: contain;          /* mantém imagem dentro sem cortar */
+    border-radius: 6px;
   }
   
   .nome {
     display: block;
-    font-size: 1rem;
+    font-size: 10px;
     font-weight: 500;
-    margin-bottom: 4px;
+    color: #000;
   }
   
   .preco-original {
     text-decoration: line-through;
     color: #da1d1dd3;
     font-size: 0.9rem;
+    font-weight: bold;
   }
   
   .preco-promocional {
@@ -56,14 +55,13 @@
     font-size: 1rem;
   }  
 
-.produto-item img {
-  width: 100%;
-  max-width: 140px;
-  height: 120px;                /* força mesma altura */
-  object-fit: contain;          /* mantém imagem dentro sem cortar */
-  border-radius: 6px;
-  margin-bottom: 8px;
-  display: block;
-  background-color: #00327e;       /* evita fundo estranho em imagens com transparência */
-}
+  .promocao-item-link 
+  {
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    text-decoration: none;  
+    color: inherit;  
+  }
+
   

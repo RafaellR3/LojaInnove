@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { get, BASE_URL } from '../services/api';
 import '../styles/Promocoes.css';
 import { Link } from 'react-router-dom';
@@ -30,7 +30,7 @@ const Promocoes = () => {
       <h2>Promoções</h2>
       <div className="lista-promocoes">
         {promocoes.map(prod => (
-          <Link to={`/produto/${prod.produto.id}`} className="produto-item-link">
+          <Link to={`/produto/${prod.produto.id}`} className="promocao-item-link">
           <div key={prod.produto.id} className="promo-item">
             <img src={`${BASE_URL}${prod.produto.urlImagem}`} alt={prod.nome} />
             <span className="nome">{prod.produto.nome}</span>
