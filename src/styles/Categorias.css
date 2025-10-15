@@ -1,6 +1,7 @@
 .categorias {
     margin: 5px 0;
     padding: 0 0px;
+    text-align: center; 
   }
   
   .categorias h2 {
@@ -10,11 +11,14 @@
   }
   
   /* Container horizontal com scroll */
- .lista-categorias {
+.lista-categorias {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 12px;
   padding: 8px;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
 }
   
   .categoria-item {
@@ -26,7 +30,7 @@
     background: #f3f4f6;
     border-radius: 4px;
     transition: background 0.5s;
-    height: 120px;
+    height: 150px;
   }
   
   .categoria-item:hover {
