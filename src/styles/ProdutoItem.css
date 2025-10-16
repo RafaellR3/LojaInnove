@@ -5,12 +5,18 @@
     gap: 5px;  
     scroll-behavior: smooth;
     border-radius: 8px;
+    justify-content: center;
   }
-  
+   .produto-imagem {
+  display: flex;
+    align-items: center; /* alinha verticalmente */
+    justify-content: center; /* centraliza horizontalmente (opcional) */
+  } 
   .produto-imagem img {
-    width: 100px;
-    height: 100%;
-    border-radius: 6px;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px; 
+    margin-left: 2px;
   } 
   
   .produto-dados h4 {
@@ -50,6 +56,8 @@
   }
 
   .produto-dados {
-    margin-right: 12px;
-    justify-content: center;
+    margin-right: 12px; display: flex;
+    flex-direction: column; /* garante que os itens fiquem um abaixo do outro */
+    justify-content: center; /* centraliza verticalmente */
+    height: 100%; /* ocupa toda a altura do card */
   }
