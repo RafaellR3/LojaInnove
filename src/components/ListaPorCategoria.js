@@ -1,4 +1,4 @@
-import React from 'react';
+import '../styles/ProdutoItem.css';
 import ProdutoItem from './ProdutoItem';
 
 const ListaPorCategoria = ({ categoria, produtos }) => {
@@ -8,14 +8,16 @@ const ListaPorCategoria = ({ categoria, produtos }) => {
   if (filtrados.length === 0) return null;
 
   return (
-    <section id={categoria.id} style={{ marginBottom: '40px' }}>
-      <h2>{categoria.nome}</h2>
-      <div>
-        {filtrados.map(prod => (
-          <ProdutoItem key={prod.id} produto={prod} />
-        ))}
-      </div>
-    </section>
+    <div > 
+      <section id={categoria.id} style={{ marginBottom: '40px' }}>
+        <h2>{categoria.nome}</h2>
+        <div className="produto-item-lista"> 
+          {filtrados.map(prod => (
+            <ProdutoItem key={prod.id} produto={prod} />
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 

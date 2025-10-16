@@ -13,7 +13,7 @@ const Header = () => {
   const navigate = useNavigate();  
   const [busca, setBusca] = useState("");
 
-const handleLogout = () => {
+const sair = () => {
     const confirmar = window.confirm("Tem certeza que deseja sair?");
     if (confirmar) {
       logout();
@@ -24,9 +24,12 @@ const handleLogout = () => {
   const toggleMenu = () => setMenuAberto(!menuAberto);
   const closeMenu = () => setMenuAberto(false);
 
-  const handleSearch = () => {
-    console.log("Pesquisar:", busca);
-    // aqui você pode disparar a busca na lista de produtos, por exemplo
+  const buscar = (e) => {   
+    e.preventDefault(); // impede reload do form
+    if (busca.trim() !== "") {
+      navigate('/produtospequisa', { state: busca });
+      setBusca("")
+    }
   };
   return (
     <header className="navbar">
@@ -71,7 +74,7 @@ const handleLogout = () => {
             <FaHistory    className="icon" /> Rastrear
           </Link> */}
           {usuario ? (
-            <Link onClick={handleLogout} className="icon">
+            <Link onClick={sair} className="icon">
               <FiLogOut  className="icon"/> Sair
             </Link>
           ) : (
@@ -83,30 +86,30 @@ const handleLogout = () => {
         </nav>
         
       </div>
-       <form className="search-box" onSubmit={handleSearch}>
-          <input
-            type="text"
-            placeholder="Procurar produto..."
-            value={busca}
-            onChange={(e) => setBusca(e.target.value)}
-          />
-          <span className="search-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="20"
-              width="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </span>
-        </form>
+      <form className="search-box" onSubmit={buscar}>
+        <input
+          type="text"
+          placeholder="Procurar produto..."
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+        />
+        <button type="button" className="search-icon" onClick={buscar}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20"
+            width="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+      </form>
     </header>
   );
 };

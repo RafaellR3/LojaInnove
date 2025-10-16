@@ -13,6 +13,7 @@ import Pedidos from './pages/Pedidos';
 import Rastreamento from './pages/Rastreamento';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
+import ProdutosPesquisa from './pages/ProdutosPesquisa';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/produto/:id" element={<ProdutoDetalhe />} />  
           <Route path="/produtoporcategoria" element={<ProdutosPorCategoria />} />  
+          <Route path="/produtospequisa" element={<ProdutosPesquisa />} />  
         </Routes>
       </div>
     </Router>

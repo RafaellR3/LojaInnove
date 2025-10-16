@@ -1,5 +1,7 @@
   .promocoes {
-    padding: 0 12px;
+    padding: 1px 12px;
+    background-color: crimson;
+    border-radius: 10px;
   }
   
   .promocoes h2 {
@@ -37,7 +39,7 @@
   
   .nome {
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     color: #000;
   }
@@ -52,7 +54,7 @@
   .preco-promocional {
     color: #1945d4;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.3rem;
   }  
 
   .promocao-item-link 
