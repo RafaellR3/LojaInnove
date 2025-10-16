@@ -57,6 +57,7 @@
   .spinner {
     animation: spin 1s linear infinite;
     font-size: 24px; /* Tamanho opcional */
+    color: white;
   }
   
   @keyframes spin {

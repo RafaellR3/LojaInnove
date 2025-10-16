@@ -10,7 +10,8 @@ const Header = () => {
   const location = useLocation();  
   const { usuario } = useContext(AuthContext);  
   const { logout } = useContext(AuthContext);  
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
+  const [busca, setBusca] = useState("");
 
 const handleLogout = () => {
     const confirmar = window.confirm("Tem certeza que deseja sair?");
@@ -23,6 +24,10 @@ const handleLogout = () => {
   const toggleMenu = () => setMenuAberto(!menuAberto);
   const closeMenu = () => setMenuAberto(false);
 
+  const handleSearch = () => {
+    console.log("Pesquisar:", busca);
+    // aqui você pode disparar a busca na lista de produtos, por exemplo
+  };
   return (
     <header className="navbar">
       <div className="container">
@@ -62,7 +67,7 @@ const handleLogout = () => {
           <Link to="/perfil" onClick={closeMenu} className={location.pathname === '/perfil' ? 'active' : ''}>
             <FaUser className="icon" /> Perfil
           </Link>
-      {/*     <Link to="/rastrear" onClick={closeMenu} className={location.pathname === '/rastrear' ? 'active' : ''}>
+        {/*     <Link to="/rastrear" onClick={closeMenu} className={location.pathname === '/rastrear' ? 'active' : ''}>
             <FaHistory    className="icon" /> Rastrear
           </Link> */}
           {usuario ? (
@@ -76,7 +81,32 @@ const handleLogout = () => {
           )}
     
         </nav>
+        
       </div>
+       <form className="search-box" onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Procurar produto..."
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+          />
+          <span className="search-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="20"
+              width="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+        </form>
     </header>
   );
 };

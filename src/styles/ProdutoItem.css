@@ -1,44 +1,34 @@
-.produto-item-lista {
+  .produto-item-lista { 
     display: flex;
-    border: 1px solid #eee;
+    flex-wrap: wrap;    
+    overflow-x: auto;           /* ativa rolagem horizontal */
+    gap: 5px;  
+    scroll-behavior: smooth;
     border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 12px;
-    background-color: #fff;
-    text-align: left;
-  }
-  
-  .produto-imagem {
-    width: 30%; /* Tamanho fixo da imagem */
-    height: auto;
-    margin-right: 16px; /* Espaçamento entre imagem e dados */
   }
   
   .produto-imagem img {
-    width: 100%;
+    width: 100px;
     height: 100%;
-    object-fit: contain;
     border-radius: 6px;
-  }
-  
-  .produto-dados {
-    flex: 1; /* Faz com que o bloco de dados ocupe o restante do espaço */
-  }
+  } 
   
   .produto-dados h4 {
-    font-size: 1.2rem;
+    font-size: 0.7rem;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin: 6px 0 4px 0;
+    max-height: 50px;
+    overflow: hidden;  
   }
   
   .preco {
     font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
+    color: black;
   }
   
   .estoque {
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     color: #555;
   } 
   .descricao {
@@ -50,11 +40,16 @@
   {
     display: flex;
     border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
     background-color: #fff;
     text-align: left;      
     text-decoration: none;  
-    color: inherit;     
+    color: inherit;  
+    height: 110px;   
+    width: 49%;
   }
 
+  .produto-dados {
+    margin-right: 12px;
+    justify-content: center;
+  }

@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import CategoriaMenu from '../components/CategoriaMenu';
 import { FaSpinner } from 'react-icons/fa';
+import '../styles/ProdutoItem.css';
 
 
 const Produtos = () => {
@@ -13,7 +14,8 @@ const Produtos = () => {
   const [produtos, setProdutos] = useState([]);
   const [carregando, setCarregando] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => {    
+    setCarregando(true);
     get(`produto/${cat.id}/PesquisarPorCategoria`)
       .then(data => {
         setProdutos(data);
@@ -25,21 +27,26 @@ const Produtos = () => {
       });
   }, [cat.id]);
 
-  if (carregando) return <p>Carregando produtos... <FaSpinner className="spinner" /></p>;
-
-  return (
-    <div> 
+  if (carregando) return(
+    <div className="produto-lista"> 
       <CategoriaMenu categorias={categorias} />
       <h3>{cat.nome}</h3>
-      <div style={{ padding: '16px' }}>
+      <p>Carregando produtos... <FaSpinner className="spinner" /></p>;
+    </div>
+  ) 
+
+  return (
+    <div className="produto-lista"> 
+      <CategoriaMenu categorias={categorias} />
+      <h3>{cat.nome}</h3>
+      <div className="produto-item-lista">
         {produtos.map(produto => (
           <Link to={`/produto/${produto.id}`} className="produto-item-link">
             <div className="produto-imagem">
-            <img src={`${BASE_URL}${produto.urlImagem}`} alt={produto.nome} className='icon'/>
+            <img src={`${BASE_URL}${produto.urlImagem}`} alt={produto.nome}/>
             </div>
             <div className="produto-dados">
               <h4>{produto.nome}</h4>
-              <p className='descricao'>{produto.descricao}</p>
               <p className="preco">R$ {produto.preco.toFixed(2)}</p>
               <p className="estoque">Estoque: {produto.estoque}</p>
             </div>

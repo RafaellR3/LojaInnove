@@ -1,7 +1,7 @@
 .navbar {
   background-color: #00327e;
   color: white;
-  padding: 25px 16px;
+  padding: 10px 8px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -93,3 +93,46 @@
     user-select: none;
   }
 }
+  .search-box {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 10px auto;
+    background: white;
+    border: 3px solid crimson;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none; /* espaço extra à direita p/ ícone */
+  font-size: 16px;
+  color: #333;
+  margin: 5px;
+}
+
+.search-box input::placeholder {
+  color: #888;
+}
+
+/* Ícone dentro do campo */
+.search-icon {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: crimson;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}
+
+.search-icon svg {
+  stroke: white;
+}
+

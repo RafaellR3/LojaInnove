@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 const CategoriaMenu = ({categorias}) => {
   const navigate = useNavigate();
 
+  const navegar =(_cat) => {    
+    navigate('/produtoporcategoria', { state: { cat: _cat, categorias: categorias } });
+  }
+
   return (
     <nav >
       <div>
@@ -15,7 +19,7 @@ const CategoriaMenu = ({categorias}) => {
       {categorias.map((cat, index)  => (              
         <div key={index}
              className="categoria-menu-item"
-             onClick={() => navigate('/produtoporcategoria', { state: { cat: cat, categorias: categorias } })}
+             onClick={() => navegar(cat)}
              style={{ cursor: 'pointer' }}>
            <img src={`${BASE_URL}${cat.urlImagem}`} alt={cat.nome}  className='icone'/>
         </div>
