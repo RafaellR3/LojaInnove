@@ -40,6 +40,7 @@ export async function post(endpoint, body, auth = false) {
     if (!res.ok) {
       const errorText = await res.text();
       alert(`Erro: ${errorText}`);
+      return { error: errorText };
     }
     return res.json();
   } 

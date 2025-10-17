@@ -9,7 +9,7 @@ body, html {
   justify-content: center;
   align-items: center;
   height: calc(100vh - 80px); /* deixa espaço pro header */
-  background-color: #f4f6f8;
+  background-color: #00327e;
 }
 
 .login-box {
@@ -24,6 +24,13 @@ body, html {
   flex-direction: column;
   justify-content: center; /* centraliza verticalmente */
   align-items: center;     /* centraliza horizontalmente */
+}
+
+.login-link{
+  margin-top: 20px;
+  color: #00327e;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .login-box h2 {

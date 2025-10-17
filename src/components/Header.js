@@ -70,15 +70,13 @@ const sair = () => {
           <Link to="/perfil" onClick={closeMenu} className={location.pathname === '/perfil' ? 'active' : ''}>
             <FaUser className="icon" /> Perfil
           </Link>
-        {/*     <Link to="/rastrear" onClick={closeMenu} className={location.pathname === '/rastrear' ? 'active' : ''}>
-            <FaHistory    className="icon" /> Rastrear
-          </Link> */}
+   
           {usuario ? (
             <Link onClick={sair} className="icon">
               <FiLogOut  className="icon"/> Sair
             </Link>
           ) : (
-            <Link to="/login" className="icon" >
+            <Link to="/login" onClick={closeMenu} className="icon" >
               <FiLogIn /> Login
             </Link>
           )}

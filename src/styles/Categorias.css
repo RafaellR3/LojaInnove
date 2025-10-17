@@ -30,9 +30,10 @@
     background: #f3f4f6;
     border-radius: 4px;
     transition: background 0.5s;
-    height: 120px;
+    height: auto;
     overflow: hidden;
     padding: 5px;
+    
   }
   
   .categoria-item:hover {

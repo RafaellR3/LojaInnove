@@ -34,6 +34,7 @@
 .nav {
   display: flex;
   gap: 16px;
+  z-index: 9999;
 }
 
 .nav a {
@@ -69,10 +70,12 @@
     background-color: #1e40af;
     display: none;
     padding: 16px 0;
+    direction: ltr;
   }
 
   .nav.ativo {
     display: flex;
+    z-index: 9999;
   }
 
   .nav a {

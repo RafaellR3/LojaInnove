@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../components/AuthContext";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { post} from  '../services/api';
 import "../styles/Login.css"; 
 
@@ -19,6 +19,9 @@ const Login = () => {
     if (email && senha) {      
       const dto= { email, senha };
       const response = await post('usuario/logar', dto);
+      if (response.error) {
+        return;
+      }
       login({ response });
       navigate(from, { replace: true });
     } else {
@@ -43,6 +46,8 @@ const Login = () => {
           onChange={(e) => setSenha(e.target.value)} 
         />
         <button onClick={handleLogin}>Entrar</button>
+        
+        <Link to="/login"  className="login-link" >Realizar cadastro</Link>
       </div>
     </div>
   );
