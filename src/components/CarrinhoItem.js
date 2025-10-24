@@ -67,8 +67,9 @@ const [quantidade, setQuantidade] = useState(carrinhoItem.quant);
                         <button onClick={diminuir}>-</button>
                         <span>{quantidade}</span>
                         <button onClick={aumentar}>+</button>
-                        <button className="remover" onClick={removerDoCarrinho}><BsTrash className="icon" ></BsTrash ></button>
+                                             
                     </div>
+                         <button  className="botao-remover"onClick={removerDoCarrinho}><BsTrash className="icon" ></BsTrash ></button>
                 </div>
             </div>   
         </div>
