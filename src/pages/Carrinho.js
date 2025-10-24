@@ -5,6 +5,7 @@ import EnderecoCarrinho from '../components/EnderecoCarrinho';
 import { FaSpinner } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../components/AuthContext";
+import '../styles/Carrinho.css';
 
 const Carrinhos = () => {
   const [carrinho, setCarrinho] = useState([]);
@@ -99,13 +100,12 @@ return (
           />
         ))}
     </div>
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h3>Total:</h3>
-        <h3>R$ {valorTotal}</h3>
+    <div className="totalizador">
+        <h3>Total: R$ {valorTotal}</h3>
     </div>
      <div>
         <EnderecoCarrinho  onEnderecoSelecionado={handleEnderecoSelecionado}/>
-        <button className='botao-enderecos' onClick={handleConfirmar}> Confirmar Pedido </button> 
+        <button className='botao-confirmar' onClick={handleConfirmar}> Confirmar Pedido </button> 
      </div>    
   </div>
   );

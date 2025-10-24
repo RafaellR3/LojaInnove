@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import '../styles/ProdutoDetalhe.css'; 
 import { get, post, BASE_URL } from '../services/api';
-import { FaSpinner } from 'react-icons/fa';
+import { FaSpinner, FaWhatsapp, FaFacebook, FaInstagram  } from 'react-icons/fa';
 import { AuthContext } from "../components/AuthContext";
+import ListaProdutos from '../components/ListaProdutos';
 
 const ProdutoDetalhe = () => {
   const { id } = useParams();  // Captura o id da URL
@@ -31,7 +32,7 @@ const ProdutoDetalhe = () => {
         console.error(err);
         setCarregando(false);
       });
-  }, [id]);  // Recarrega os dados quando o id mudar
+  }, [id]);  
 
   const relacionadosFiltrados = produtosRelacionados.filter((prod => prod.codigoCategoria === produto.codigoCategoria));
 
@@ -56,7 +57,6 @@ const adicionarAoCarrinho = () => {
       CodigoUsuario: `${usuario.response.id}`,
     };
 
-    // Fazendo a requisição POST para adicionar o produto ao carrinho
     post('Carrinho/AdicionarItem', produtoCarrinho)
     .then(data => {
       console.log("Produto adicionado ao carrinho:", data);
@@ -104,25 +104,21 @@ const adicionarAoCarrinho = () => {
         </div>       
   
         {/* Botões de compartilhamento */}
+        <h3>Compartilhar</h3>
         <div className="compartilhar">
-          <button>Compartilhar no Facebook</button>
-          <button>Compartilhar no WhatsApp</button>
-          <button>Compartilhar no Instagram</button>
+
+          <button><FaWhatsapp className="icon-compartilhar"></FaWhatsapp></button>
+          <button><FaFacebook className="icon-compartilhar"> </FaFacebook></button>
+          <button><FaInstagram className="icon-compartilhar"></FaInstagram ></button>
         </div>
       </div>
   
       {/* Produtos relacionados abaixo */}
       <div className="produtos-relacionados">
         <h3>Produtos Relacionados</h3>
-        <div className="produtos-lista-detalhe">
+        <div className="produto-item-lista">
           {relacionadosFiltrados.length > 0 ? (
-            relacionadosFiltrados.map((item) => (
-              <div key={item.id} className="produto-item">
-                <img src={`${BASE_URL}${item.urlImagem}`} alt={item.nome} />
-                <p>{item.nome}</p>
-                <span>R$ {item.preco.toFixed(2)}</span>
-              </div>
-            ))
+           <ListaProdutos produtos={relacionadosFiltrados} />
           ) : (
             <p>Sem produtos relacionados no momento.</p>
           )}

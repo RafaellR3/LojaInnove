@@ -1,14 +1,17 @@
-.endereco-selecionado{
-    border: 1px solid #eee;
-    border-radius: 8px;
-    margin-bottom: 5px;
-    background-color: #fff;
-    text-align: left;
-    width: 100%;
+.endereco-link{
+  display: block;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  text-align: left;      
+  text-decoration: none;  
+  color: inherit;  
+  padding: 10px;
 }
+
 .botao-enderecos{
-    background-color: #00327e;
-    color: white;
+    background-color: white;
+    color: #00327e;
     font-size: 18px;
     padding: 8px 16px;
     border: none;
@@ -19,18 +22,15 @@
     margin: 10px;    
 }
 
-span, input{
+input{
     margin: 10px;
+    font-size: 20px;
 }
 
 .botao-add{
-    background-color: #00327e;
-    color: white;
+    background-color: white;
+    color: #00327e;
 }
-
-.endereco-link {
-    text-align: center;
-    text-decoration: none;  
-    color: white;
-    font-size: 0.9rem;  
-  }
+.dados-endereco{
+    background-color: white;
+}

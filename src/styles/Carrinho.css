@@ -1,0 +1,30 @@
+.totalizador{ 
+    display: 'flex'; 
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    background-color: white ;
+    border-radius: 4px;
+    padding: 0.1%;
+}
+
+.totalizador h3 {
+    padding: auto;
+    color: #000;
+    margin:5px ;
+}
+
+.botao-confirmar{
+    background-color: white;
+    color: #00327e;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 0px 0px 0px;    
+    display: block;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px;
+}

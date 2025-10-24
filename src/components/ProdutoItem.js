@@ -10,8 +10,11 @@ const ProdutoItem = ({ produto }) => {
           </div>
           <div className="produto-dados">
             <h4>{produto.nome}</h4>
-            <p className="preco">R$ {produto.preco.toFixed(2)}</p>
-            <p className="estoque">Estoque: {produto.estoque}</p>
+            
+            <div class="info-produto">
+              <p className="preco">R$ {produto.preco.toFixed(2)}</p>
+              <p className="estoque">Estoque: {produto.estoque}</p>
+            </div>
           </div>
         </Link>
     );

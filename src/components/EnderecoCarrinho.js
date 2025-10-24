@@ -11,8 +11,6 @@ const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
     const [erro, setErro] = useState(null);    
     const { usuario } = useContext(AuthContext);
 
-
-
     useEffect(() => {
         setCarregando(true);
         setErro(null);
@@ -43,7 +41,7 @@ const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
        return (
       <div> 
         <p>Nenhum endereço informado.</p>
-        <button className='botao-add'><Link to={`/enderecos/${usuario.id}`} className='endereco-link'>Adicionar Endereço</Link></button>
+        <button className='botao-add'><Link to={`/enderecos/${usuario.id}`} className='endereco-add'>Adicionar Endereço</Link></button>
       </div>
        );
    
@@ -52,18 +50,14 @@ const EnderecoCarrinho = ({ onEnderecoSelecionado })=> {
     onEnderecoSelecionado(enderecoSel);
   
     return (   
-      <section className="mais-vendidos">
+      <section className="endereco-selecionado">
         <h3>Endereço de entrega</h3>
-        <Link to={`/enderecos/${enderecoSel.codigoUsuario}`} className="produto-item-link">
-        <div >
-          <div key={enderecoSel.id} >
-              <span className="nome">Rua: {enderecoSel.rua}, Num.: {enderecoSel.numero}</span>
-              <span className="nome">Cidade: {enderecoSel.cidade}</span>
-              <span className="nome">Bairro: {enderecoSel.bairro}</span>
-              <span className="nome">CEP: {enderecoSel.cep}</span>
-            </div>
-        </div>        
-      </Link>
+        <Link to={`/enderecos/${enderecoSel.codigoUsuario}`} className="endereco-link" key={enderecoSel.id} > 
+            <span className="nome">Rua: {enderecoSel.rua}, Num.: {enderecoSel.numero}</span>
+            <span className="nome">Cidade: {enderecoSel.cidade}</span>
+            <span className="nome">Bairro: {enderecoSel.bairro}</span>
+            <span className="nome">CEP: {enderecoSel.cep}</span>
+        </Link>
       </section> 
     );
 };

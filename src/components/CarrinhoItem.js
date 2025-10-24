@@ -1,6 +1,7 @@
-import React, {useState}  from 'react';
+import {useState}  from 'react';
 import '../styles/CarrinhoItem.css';
 import { put, del, BASE_URL} from '../services/api';
+import { BsTrash } from "react-icons/bs";   
 
 const CarrinhoItem = ({ carrinhoItem, onAtualizarCarrinho, onAtualizaCarrinhoItens }) => {
 const [quantidade, setQuantidade] = useState(carrinhoItem.quant);
@@ -55,21 +56,19 @@ const [quantidade, setQuantidade] = useState(carrinhoItem.quant);
             </div>
             <div className="produto-info-carrinho">    
                 <div key={carrinhoItem.id} className="produto-item-carrinho">
-                    <h3>{carrinhoItem.produto.nome}</h3>
-                    <p><strong>Preço:</strong> R$ {carrinhoItem.precoUn?.toFixed(2)}</p>
+                    <p>{carrinhoItem.produto.nome}</p>
+                    <p>Preço: R$ {carrinhoItem.precoUn?.toFixed(2)}</p>
                     <div className="totalizador-carrinho">
-                        <strong>Total: R$ {(quantidade * carrinhoItem.precoUn).toFixed(2)}</strong>
-                        </div>
+                        <p>Total: R$ {(quantidade * carrinhoItem.precoUn).toFixed(2)}</p>
                     </div>
-                    <div className="produto-controles">
+                </div>
+                <div className="produto-controles">
                     <div className="controle-quantidade">
                         <button onClick={diminuir}>-</button>
                         <span>{quantidade}</span>
                         <button onClick={aumentar}>+</button>
-                        <button onClick={removerDoCarrinho}>Remover</button>
+                        <button className="remover" onClick={removerDoCarrinho}><BsTrash className="icon" ></BsTrash ></button>
                     </div>
-
-
                 </div>
             </div>   
         </div>

@@ -3,17 +3,33 @@
     justify-content: space-between;
     padding: 10px;
   }
-  
+  .produto-imagem-detalhe {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+  }
+
   .produto-imagem-detalhe img {
     width: 100px;
     height: auto;
     object-fit: contain;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
   }
   
   .produto-info {
     display: flex;
     flex-direction: column;
     justify-content: center;  
+    margin: 0px;
+    padding: 15px 15px;
+    background-color: white;
+    border-radius: 8px;
   }
   
   .quantidade-container {
@@ -81,6 +97,7 @@
     font-weight: bold;
     width: 30px;
     text-align: center;
+    color: black;
   }
   
   .totalizador {
@@ -90,19 +107,20 @@
   .produto-detalhe {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaçamento entre os blocos */
+    gap: 20px;     
+    color: black;
   }
   
-  .produto-imagem-detalhe img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-  }
   
   .produto-info-detalhe {
     display: flex;
     flex-direction: column;
     gap: 15px;
+  }
+    
+  .produto-info p, h2 {
+    margin: 5px;    
+    color: black;
   }
   
   .produto-controles {
@@ -131,25 +149,27 @@
   
   .produto-item-detalhe p {
     font-size: 14px;
+    margin: 0px;
   }
   
   .produto-item-detalhe span {
-    color: #004aad;
+    color: black;
     font-weight: bold;
   }
   
   .compra-buttons button {
     margin-top: 10px;
   }
-  .compartilhar {
-  margin-top: 20px;
+
+.compartilhar {
   display: flex;
   gap: 10px;
+  padding: 0px;
+  justify-content: space-around;
 }
 
 .compartilhar button {
   color: #00327e;
-  padding: 8px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -158,4 +178,12 @@
 .compartilhar button:hover {
   background-color: #00327e;
   color: white;
+}
+
+h3 {
+  color: white;
+}
+
+.icon-compartilhar {
+  font-size: 30px;
 }

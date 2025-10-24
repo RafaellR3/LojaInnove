@@ -7,11 +7,13 @@
     border-radius: 8px;
     justify-content: center;
   }
-   .produto-imagem {
-  display: flex;
+
+  .produto-imagem {
+    display: flex;
     align-items: center; /* alinha verticalmente */
     justify-content: center; /* centraliza horizontalmente (opcional) */
   } 
+
   .produto-imagem img {
     width: 80px;
     height: 80px;
@@ -19,45 +21,61 @@
     margin-left: 2px;
   } 
   
-  .produto-dados h4 {
-    font-size: 0.7rem;
-    font-weight: bold;
-    margin: 6px 0 4px 0;
-    max-height: 50px;
-    overflow: hidden;  
-  }
-  
-  .preco {
-    font-weight: bold;
-    font-size: 0.7rem;
-    color: black;
-  }
-  
-  .estoque {
-    font-size: 0.7rem;
-    color: #555;
-  } 
-  .descricao {
-    font-size: 0.9rem;
-    color: #555;
-  }
+.produto-dados h4 {
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin: 4px 0 0 0;
+  max-height: 60px; /* mais espaço pro nome */
+  overflow: hidden;
+  color: black;
+  line-height: 1.2;
+}
 
-  .produto-item-link 
-  {
-    display: flex;
-    border-radius: 8px;
-    margin-bottom: 5px;
-    background-color: #fff;
-    text-align: left;      
-    text-decoration: none;  
-    color: inherit;  
-    height: 110px;   
-    width: 49%;
-  }
+.estoque {
+  color: #666;              /* tom mais suave */
+}
+  
+.preco {
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: blue ;
+  margin-bottom: 2px;
+}
 
-  .produto-dados {
-    margin-right: 12px; display: flex;
-    flex-direction: column; /* garante que os itens fiquem um abaixo do outro */
-    justify-content: center; /* centraliza verticalmente */
-    height: 100%; /* ocupa toda a altura do card */
-  }
+.estoque {
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.descricao {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.produto-item-link 
+{
+  display: flex;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  text-align: left;      
+  text-decoration: none;  
+  color: inherit;  
+  height: 110px;   
+  width: 49%;
+}
+
+.produto-dados {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* nome em cima, preço/estoque embaixo */
+  height: 100%;
+  margin-right: 8px;
+}
+
+.info-produto {
+  display: flex;
+  flex-direction: column; /* ou row, se quiser lado a lado */
+  align-items: flex-start; /* alinha à esquerda */
+  margin-top: auto; /* força a ficar embaixo */
+}
