@@ -140,3 +140,8 @@
   stroke: white;
 }
 
+.usuario-logado {
+  color: white;
+  font-weight: 600;
+  margin-left: 15px;
+}

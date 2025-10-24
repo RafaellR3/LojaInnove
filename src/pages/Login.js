@@ -47,7 +47,7 @@ const Login = () => {
         />
         <button onClick={handleLogin}>Entrar</button>
         
-        <Link to="/CadastroUsuarioForm"  className="login-link" >Realizar cadastro</Link>
+        <Link to="/Cadastro"  className="login-link" >Realizar cadastro</Link>
       </div>
     </div>
   );

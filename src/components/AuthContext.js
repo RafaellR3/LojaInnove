@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem("usuario");
     if (storedUser) setUsuario(JSON.parse(storedUser));
+    debugger;
   }, []);
 
   const login = (dadosUsuario) => {

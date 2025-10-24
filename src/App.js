@@ -36,7 +36,7 @@ function App() {
           <Route path="/produto/:id" element={<ProdutoDetalhe />} />  
           <Route path="/produtoporcategoria" element={<ProdutosPorCategoria />} />  
           <Route path="/produtospequisa" element={<ProdutosPesquisa />} />
-          <Route path='/CadastroUsuarioForm' element={ <CadastroUsuarioForm />} /> 
+          <Route path='/Cadastro' element={ <CadastroUsuarioForm />} /> 
           <Route path="*" element={<h4>Página Não Encontrada</h4>} /> 
         </Routes>
       </div>

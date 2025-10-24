@@ -84,6 +84,14 @@ const sair = () => {
         </nav>
         
       </div>
+      <div>
+        
+        {usuario?
+          <span className="usuario-logado">Olá, {usuario.response.nome}</span>
+          :
+          <span className="usuario-logado">Olá, visitante</span>
+        }
+      </div>
       <form className="search-box" onSubmit={buscar}>
         <input
           type="text"
